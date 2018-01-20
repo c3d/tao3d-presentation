@@ -1,0 +1,2 @@
+color_hsv 20*time, 100%, 100%
+circle 200*sin(4.1*time), 0, 100

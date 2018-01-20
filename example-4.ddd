@@ -1,0 +1,6 @@
+extrude_depth 45
+rotate_y  0.5 * mouse_x
+rotate_x -0.5 * mouse_y
+color_hsv 20 * time, 100%, 100%
+font "Impact", 120
+text "Hello"

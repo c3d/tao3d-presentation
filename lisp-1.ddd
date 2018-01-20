@@ -1,0 +1,11 @@
+rotate_stuff Speed, Stuff ->
+    translate_y -160
+    locally
+        rotate_y Speed * time
+        Stuff
+
+rotate_stuff -30, { color "red"; circle 100 }
+
+rotate_stuff 500,
+    color "blue"
+    rectangle 250, 50

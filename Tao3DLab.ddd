@@ -1,0 +1,166 @@
+// ----------------------------------------------------------------------------
+main_title_slide "Main title",
+// ----------------------------------------------------------------------------
+    title "Tao3D: Like an interactive 3D LaTeX Lisp"
+    subtitle
+        paragraph "A presentation tool designed for developers"
+        paragraph "A programming language designed for 3D animations"
+    presentation_author
+        paragraph "Christophe de Dinechin (dinechin@redhat.com)"
+
+    picture
+        translate 600, 500, 20
+        rotate_z -8
+        image 0, 0, 30%, 30%, "Tao3D.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "What is Tao3D?",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle
+        text "And what is """
+        italic "Interactive 3D LaTeX Lisp"
+        text """ supposed to mean?"
+    left_column
+        * "Tao3D is a programming language for real-time interactive 3D"
+        ** "A programming language"
+        ** "Real-time"
+        ** "Interactive"
+        ** "in three dimensions"
+        §
+        * "Like LaTeX, Tao3D is..."
+        ** "Designed to create documents"
+        ** "User configurable and stylable"
+        §
+        * "Like Lisp, Tao3D is..."
+        ** "Functional"
+        ** "Extensible"
+        ** "Homoiconic (programs are data)"
+
+    if smooth_step in 7.8..8.2 then
+        redhat_theme "SeasonsGreetings"
+        code_move 400, -30, 700, 800
+    else
+        redhat_theme "RedHat"
+        code_move_default
+
+    picture
+        example_box 2, "Programming language", "example-1.ddd",
+            import "example-1.ddd"
+        example_box 3, "Real-time", "example-2.ddd",
+            import "example-2.ddd"
+        example_box 4, "Interactive", "example-3.ddd",
+            import "example-3.ddd"
+        example_box 5, "Three dimensions", "example-4.ddd",
+            light 0
+            light_position 100, 100, 1000
+            show 1.5
+            translate_z 150
+            import "example-4.ddd"
+
+        example_box 7, "Documents", "latex-1.ddd",
+            image 0, -250, 30%, 30%, "Text Based.png"
+        example_box 8, "Styles", "latex-2.ddd", false
+
+        example_box 10, "Functional", "lisp-1.ddd",
+            import "lisp-1.ddd"
+        example_box 11, "Extensible", "lisp-2.ddd",
+            import "lisp-2.ddd"
+        example_box 12, "Homoiconic", "lisp-3.ddd",
+            color "darkblue"
+            translate -200, -200, 0
+            font "Impact", 40
+            import "lisp-3.ddd"
+
+
+// ============================================================================
+//
+section_slide "Installation",
+//
+// ============================================================================
+    title page_label
+    subtitle "Installing or building yourself..."
+    picture
+        translate 600, 400, 50
+        rotate_z -9
+        image 0, 0, 70%, 70%, "Tao3DInstall.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Installing Tao3D the easy way",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle
+        paragraph "Download from the web site and run the installer"
+        paragraph { code "https://tao3d.sourceforge.net" }
+    picture
+        frame_texture 1500, 800,
+            translate_y (650 * smooth_step - 1350) * fade_at(smooth_step, 1)
+            scale 30% + 42% * fade_at(smooth_step, 1)
+            image 0, 0, 100%, 100%, "Tao3DWebSite.png"
+        rectangle 0, 100, 1500, 800
+        at_step 3
+
+
+// ----------------------------------------------------------------------------
+base_slide "Building Tao3D from git",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle
+        paragraph "Hard dependencies on Qt5 and LLVM"
+        paragraph { code "https://github.com/c3d/tao-3D" }
+    picture
+        at_step 1
+        code_box -400, 100, 700, 500, "Dependencies",
+            text load_text "dependencies.txt"
+        at_step 2
+        code_box  400, 100, 700, 500, "Installation",
+            text load_text "installation.txt"
+
+
+// Language
+// Drawings
+// Slides
+// Themes
+
+
+// ----------------------------------------------------------------------------
+section_slide "Thank you",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Now is a good time for questions"
+
+    picture
+        translate 600, 500, 20
+        rotate_z -8
+        image 0, 0, 30%, 30%, "Tao3D.png"
+
+    contents 0,
+        text_box 500, -400, 600, 200,
+            style "story"
+            font_size 30
+            anchor
+                image -80, -40, 10% , 10% , "Tao3D.png"
+            paragraph "This Tao3D presentation is available at"
+            paragraph "https://github.com/c3d/tao3d-presentation"
+
+
+disabled
+    import SeasonsGreetingsTheme
+    import BrightRectanglesTheme
+    import PastelTrianglesTheme
+    import WhiteChristmasTheme
+
+    theme "SeasonsGreetings"
+    slide "Tao3D is text based",
+        subtitle "Easy to write your documents"
+        § "Paragraphs for introductions"
+
+        * "Bullets for key points"
+        ** "Second-level bullets for details"
+        ** "and additional information"
+
+        * "A second bullet"
+        ** "Make your points as fast as you type"
+        ** "Use git to cooperate on presentations"

@@ -1,0 +1,2 @@
+color_hsv 20 * time, 100%, 100%
+circle mouse_x, mouse_y, 100

@@ -1,0 +1,11 @@
+slide "Tao3D is text based",
+    subtitle "Easy to write your documents"
+    § "Paragraphs for introductions"
+
+    * "Bullets for key points"
+    ** "Second-level bullets for details"
+    ** "and additional information"
+
+    * "A second bullet"
+    ** "Make your points as fast as you type"
+    ** "Use git to cooperate on presentations"

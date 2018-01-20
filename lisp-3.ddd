@@ -1,0 +1,10 @@
+chain X, Y ->
+    chain X
+    rotate_z 20 * sin time
+    translate_x 50
+    chain Y
+chain X -> render X
+
+chain "Hello", "World", { red {circle 20} }, pi,
+    color "green"
+    rectangle 60, 30

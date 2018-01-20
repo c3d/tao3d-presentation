@@ -1,0 +1,5 @@
+% git clone https://github.com/c3d/tao-3D
+% cd tao-3D
+% git submodule update --init --recursive
+% ./configure
+% make install

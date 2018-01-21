@@ -22,7 +22,10 @@ base_slide "What is Tao3D?",
         text "And what is """
         italic "Interactive 3D LaTeX Lisp"
         text """ supposed to mean?"
+
+    // We have pretty heavy animations here, control refresh precisely
     left_column
+        stepping
         * "Tao3D is a programming language for real-time interactive 3D"
         ** "A programming language"
         ** "Real-time"
@@ -38,12 +41,12 @@ base_slide "What is Tao3D?",
         ** "Extensible"
         ** "Homoiconic (programs are data)"
 
-    if smooth_step in 7.8..8.2 then
+    if smooth_step in 7.5..8.5 then
+        code_position 400, 80, 700, 800
         redhat_theme "SeasonsGreetings"
-        code_move 400, -30, 700, 800
     else
-        redhat_theme "RedHat"
         code_move_default
+        redhat_theme "RedHat"
 
     picture
         example_box 2, "Programming language", "example-1.ddd",
@@ -61,7 +64,8 @@ base_slide "What is Tao3D?",
 
         example_box 7, "Documents", "latex-1.ddd",
             image 0, -250, 30%, 30%, "Text Based.png"
-        example_box 8, "Styles", "latex-2.ddd", false
+        code_box_at_step 8, "Styles",
+            text load_text "latex-2.ddd"
 
         example_box 10, "Functional", "lisp-1.ddd",
             import "lisp-1.ddd"
@@ -72,6 +76,7 @@ base_slide "What is Tao3D?",
             translate -200, -200, 0
             font "Impact", 40
             import "lisp-3.ddd"
+
 
 
 // ============================================================================
@@ -118,6 +123,79 @@ base_slide "Building Tao3D from git",
         code_box  400, 100, 700, 500, "Installation",
             text load_text "installation.txt"
 
+
+// ============================================================================
+//
+section_slide "Programming Language",
+//
+// ============================================================================
+    title page_label
+    subtitle "What is different or unusual about the Tao3D language?"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        locally
+            radial_gradient 64, 64, 64, 128, 128,
+                gradient_color   0%, "white", 90%
+                gradient_color  70%, "white", 30%
+                gradient_color 100%, "white",  0%
+            ellipse 0, 0, 480, 220
+        image 0, 0, 70%, 70%, "programming-languages.png"
+        color "#F60", 70%
+        rotate_z 25
+        rectangle 450, 30
+
+
+// ----------------------------------------------------------------------------
+base_slide "Parse tree",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Representing any program with 8 node types"
+    left_column
+        § "Terminal nodes in the parse tree:"
+        * "Integer numbers: "; code "123"
+        ** "Separators: "; code "1_000_000"
+        ** "Based numbers: "; code "2#1001_0001"
+        ** "Exponents (positive): "; code "1e6"
+        * "Real numbers: "; code "123.0"
+        ** "Exponents: "; code "1.4e-3"
+        ** "Based: "; code "16#FF.FF_FF#e8"
+        * "Text: "; code """ABC"""; text ", "; code "'X'"
+        text ", "; code "<< Hello >>"
+        * "Names: "; code "foo_bar2"
+        text ", symbols: "; code "++"
+        §
+        § "Inner nodes in the parse tree:"
+        * "Prefix: ";  code "sin 42"; text ", "; code "+42"
+        * "Postfix: "; code "42km"; text ", "; code "42%"
+        * "Infix: "; code "42 and 1"; text ", "; code "42 + 1"
+        * "Block: "; code "(42)"; text ", "; code "[42]"
+        text ", "; code "{42}"; text ", indentation"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Lexical and syntactic elements",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Nothing wildly unusual here..."
+    story
+        § "Terminal nodes in the parse tree:"
+        * "Integer numbers: "; code "123"
+        ** "Separators: "; code "1_000_000"
+        ** "Based numbers: "; code "16#FF_FF 2#1001"
+        ** "Exponents (positive): "; code "1e6"
+        * "Real numbers: "; code "123.0 1.4e-3 2#1.01e8"
+        * "Text: "; code """ABC"""; text ", "; code "'X'"
+        text " and multiline-text: "; code "<< Hello >>"
+        * "Names: "; code "foo X1_inner"
+        text " and symbols: "; code "++ -> + -"
+        §
+        § "Inner nodes in the parse tree:"
+        * "Prefix: ";  code "sin 42"; text ", "; code "+42"
+        * "Postfix: "; code "42km"; text ", "; code "42%"
+        * "Infix: "; code "42 and 1"; text ", "; code "42 + 1"
+        * "Block: "; code "(42)"; text ", "; code "[42]"
+        text ", "; code "{42}"; text " and indentation blocks"
 
 // Language
 // Drawings

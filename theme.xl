@@ -194,7 +194,6 @@ theme_background "RedHat", Master ->
 //   Draw the triangles in the background
 // ----------------------------------------------------------------------------
     clear_color "white"
-    time
     locally
         translate_z -200
         frame_texture 80, 80,
@@ -347,17 +346,16 @@ presentation_author Body ->
 
 current_step -> 1
 
-stepping
-
 stepping ->
 // ----------------------------------------------------------------------------
 //   A body where each bullet is at a given step
 // ----------------------------------------------------------------------------
     compute_smooth_step
     current_step := 1
-    highest_step := 0.1
+    highest_step := 0.001
     on "pageentry",
         skip_directly_to 0
+stepping
 
 
 at_current_step ->
@@ -382,7 +380,7 @@ only_at N:integer, Body ->
 // ----------------------------------------------------------------------------
 //   Show something at step N only
 // ----------------------------------------------------------------------------
-    if smooth_step in N-1..N+1 then
+    if smooth_step in N-0.99..N+0.98 then
         locally
             show 0.99*fade_between(smooth_step, N, N)
             Body
@@ -412,13 +410,18 @@ bottom_right Body -> box  475, -250, 900, 350, { render Body }
     * { color_hsv 32.3 * seconds, 0.4, 1; render Body }
 
 
-red     Body -> text_span { color "#AA0022";    render Body }
-green   Body -> text_span { color "#006633";  render Body }
-blue    Body -> text_span { color "#003399";   render Body }
+red     Body -> text_span { color "#AA0022"; render Body }
+orange  Body -> text_span { color "#DD3311"; render Body }
 yellow  Body -> text_span { color "#EEAA11"; render Body }
-gray    Body -> text_span { color "#777";   render Body }
-code    Body -> text_span { font "Menlo"; blue Body }
-concept Body -> text_span { font "Amaze", 64; green Body }
+green   Body -> text_span { color "#006633"; render Body }
+blue    Body -> text_span { color "#003399"; render Body }
+ocean   Body -> text_span { color "#229988"; render Body }
+sky     Body -> text_span { color "#3399FF"; render Body }
+navy    Body -> text_span { color "#002266"; render Body }
+purple  Body -> text_span { color "#CC0099"; render Body }
+gray    Body -> text_span { color "#777";    render Body }
+code    Body -> text_span { font "Menlo";    blue   Body }
+concept Body -> text_span { font "Amaze";    green  Body }
 // ----------------------------------------------------------------------------
 //   Draw something in red, green or blue
 // ----------------------------------------------------------------------------
@@ -449,7 +452,7 @@ code_box X:real, Y:real, W:real, H:real, Title, Body ->
 // ----------------------------------------------------------------------------
 //    A text box showing a code example
 // ----------------------------------------------------------------------------
-    tbox X, Y, W, H,
+    tbox X, Y, W, H, Title,
         style "boxtitle"
         anchor
             linear_gradient 32, 64, 32, 0, 64, 64,
@@ -517,10 +520,58 @@ example_box N, Title, File, Body ->
 // ----------------------------------------------------------------------------
     only_at N,
         code_box Title,
-            text load_text File
+            if N = smooth_step then
+                colorize load_text File
+            else
+                text load_text File
         locally
             translate code_x, code_y, 20
             Body
+
+
+colorize Input:text ->
+// ----------------------------------------------------------------------------
+//   Render the given input using colorized text
+// ----------------------------------------------------------------------------
+    regexp_parse_all Input,
+        // Definition
+        - "([^\n]*)(->)" ->
+            italic { orange regexp_captured 1 }
+            gray regexp_captured 2
+        // Real numbers
+        "[0-9_]+[.][0-9_]+(e[+-]?[0-9_]+)?" ->
+            ocean regexp_captured 0
+        // Real numbers (with base)
+        "[0-9_]+#[0-9_A-Za-z]+[.][0-9_A-Za-z]+(e[+-]?[0-9_]+)?" ->
+            ocean regexp_captured 0
+        // Integer numbers
+        "[0-9_]+(e[+]?[0-9_]+)?" ->
+            ocean regexp_captured 0
+        // Integer numbers (with base)
+        "[0-9_]+#[0-9_A-Za-z]+(e[+]?[0-9_]+)?" ->
+            ocean regexp_captured 0
+        // Text
+        - "([""].*[""])|<<.*>>" ->
+            purple regexp_captured 0
+        // Characters
+        "'.*'" ->
+            purple regexp_captured 0
+        // Comments
+        "(//.*$)|(/[*].*[*]/)" ->
+            red regexp_captured 0
+        // Names
+        "[A-Za-z][A-Za-z_0-9]*" ->
+            navy regexp_captured 0
+        // Symbols
+        "[^A-Za-z0-9 \n]+" ->
+            text regexp_captured 0
+        // Spaces
+        "[ \n]+" ->
+            text regexp_captured 0
+        // Other
+        "." ->
+            text regexp_captured 0
+    refresh 0.1
 
 
 highlight_box Color:text, X:real, Y:real, W:real, H:real ->

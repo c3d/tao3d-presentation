@@ -147,19 +147,19 @@ section_slide "Programming Language",
 
 
 // ----------------------------------------------------------------------------
-base_slide "Parse tree",
+base_slide "Representing the parse tree",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Representing any program with 8 node types"
+    subtitle "Any program can be represented with only 8 node types"
     left_column
+        § "A very simple parse-tree"
+        §
         § "Terminal nodes in the parse tree:"
         * "Integer numbers: "; code "123"
         ** "Separators: "; code "1_000_000"
         ** "Based numbers: "; code "2#1001_0001"
         ** "Exponents (positive): "; code "1e6"
-        * "Real numbers: "; code "123.0"
-        ** "Exponents: "; code "1.4e-3"
-        ** "Based: "; code "16#FF.FF_FF#e8"
+        * "Real numbers: "; code "3.14 16#F.0#e-4"
         * "Text: "; code """ABC"""; text ", "; code "'X'"
         text ", "; code "<< Hello >>"
         * "Names: "; code "foo_bar2"
@@ -172,30 +172,10 @@ base_slide "Parse tree",
         * "Block: "; code "(42)"; text ", "; code "[42]"
         text ", "; code "{42}"; text ", indentation"
 
+    picture
+        example_box 1..16, "Parse tree", "parse-tree.ddd",
+            image 0, -150, 60%, 60%, "parse-tree.png"
 
-// ----------------------------------------------------------------------------
-base_slide "Lexical and syntactic elements",
-// ----------------------------------------------------------------------------
-    title page_label
-    subtitle "Nothing wildly unusual here..."
-    story
-        § "Terminal nodes in the parse tree:"
-        * "Integer numbers: "; code "123"
-        ** "Separators: "; code "1_000_000"
-        ** "Based numbers: "; code "16#FF_FF 2#1001"
-        ** "Exponents (positive): "; code "1e6"
-        * "Real numbers: "; code "123.0 1.4e-3 2#1.01e8"
-        * "Text: "; code """ABC"""; text ", "; code "'X'"
-        text " and multiline-text: "; code "<< Hello >>"
-        * "Names: "; code "foo X1_inner"
-        text " and symbols: "; code "++ -> + -"
-        §
-        § "Inner nodes in the parse tree:"
-        * "Prefix: ";  code "sin 42"; text ", "; code "+42"
-        * "Postfix: "; code "42km"; text ", "; code "42%"
-        * "Infix: "; code "42 and 1"; text ", "; code "42 + 1"
-        * "Block: "; code "(42)"; text ", "; code "[42]"
-        text ", "; code "{42}"; text " and indentation blocks"
 
 // Language
 // Drawings

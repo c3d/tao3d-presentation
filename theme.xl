@@ -514,13 +514,17 @@ code_box_at_step N, Title, Body ->
             code_box Title, Body
 
 
+X in A..B -> X >= A and X <= B
+X in A    -> X = A
+
+
 example_box N, Title, File, Body ->
 // ----------------------------------------------------------------------------
 //   Show an example in a code box
 // ----------------------------------------------------------------------------
     only_at N,
         code_box Title,
-            if N = smooth_step then
+            if smooth_step in N then
                 colorize load_text File
             else
                 text load_text File

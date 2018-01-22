@@ -1,0 +1,37 @@
+clock ->
+    locally
+        color "black"
+        locally
+            line_color "darkgrey"
+            color "white"
+            radial_gradient 200, 50, 200, 300, 300,
+                gradient_color 100% , 80% , 80% , 84% , 100%
+                gradient_color 0% , 95% , 95% , 98% , 60%
+
+            circle 0, 0, 300
+
+        locally
+            rotatez -6 * minutes - 0.1 * seconds
+            rectangle 0, 100, 15, 250
+
+        locally
+            rotatez -30 * hours - 0.5 * minutes
+            rectangle 0, 50, 15, 150
+
+        locally
+            color "red"
+            rotatez -6 * seconds
+            rectangle 0, 80, 10, 200
+            circle 0, 0, 12
+            circle 0, 180, 25
+
+        tick_mark with 0 .. 59
+
+        tick_mark N ->
+            locally
+                rotatez -6 * N
+                if N mod 5 = 0 then
+                    rectangle 0, 270, 15, 40
+                else
+                    color "darkgrey"
+                    circle 0, 270, 6

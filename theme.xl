@@ -431,7 +431,7 @@ attribute_at N:integer, Name, Example, Code ->
 //
 // ============================================================================
 
-demo_slide Title, Size, Image ->
+demo_slide Title, Size, Image, Body ->
 // ----------------------------------------------------------------------------
 //    Time for a demo
 // ----------------------------------------------------------------------------
@@ -445,6 +445,9 @@ demo_slide Title, Size, Image ->
                 align 50%
                 vertical_align 30%
                 text Title
+        Body
+demo_slide Title, Size, Image -> demo_slide Title, Size, Image, false
+
 
 
 // ============================================================================

@@ -567,8 +567,13 @@ base_slide "Using locally and shape",
 
 
 // ----------------------------------------------------------------------------
-demo_slide "Live Coding #2: Building a clock", 25%, "Clock.png"
+demo_slide "Live Coding #2: Building a clock", 25%, "Clock.png",
 // ----------------------------------------------------------------------------
+    picture
+        import "demos/clock.ddd"
+        translate_y -200
+        scale 80%
+        clock
 
 
 // ----------------------------------------------------------------------------

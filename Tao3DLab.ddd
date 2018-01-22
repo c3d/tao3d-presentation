@@ -266,7 +266,7 @@ base_slide "Dynamic compilation and updates",
     subtitle "Tao3D is designed to facilitate dynamic workflows"
     illustration 20%, "Race Car.png"
     story
-        § "Source code is translated dynamically using LLVM"
+        § "Source code is translated dynamically to machine code using LLVM"
         §
         § "Tao3D will automatically reload:"
         * "Source code"
@@ -277,7 +277,7 @@ base_slide "Dynamic compilation and updates",
         § "Use any editor you prefer for any of this"
         §
         §
-        § "We will use this for our live coding session"
+        § "We will use this for our live coding sessions"
     picture
         at_step 7
         anchor
@@ -486,11 +486,116 @@ base_slide "Shape attributes",
     subtitle "Attributes modify the drawing of shapes and are cumulative"
     illustration 50%, "Attributes.png"
     picture
-        attribute "Line color", "line_color ""blue""", { color "red"; line_color "blue"; line_width 2 }
-        attribute "Line width", "line_width 10", { color "red"; line_color "blue"; line_width 10 }
-        attribute "Texture", "texture ""Attributes.png""", { color_hsv 20 * time, 30%, 100%; texture "Attributes.png" }
-        attribute "Extrusion", "extrude_depth 80", { color "red"; line_color "blue"; translate_z 50; rotate_y 20 * time; extrude_depth 80 }
+        attribute "Line color", "line_color ""blue""",
+            color "red"
+            line_color "blue"
+            line_width 2
+        attribute "Line width", "line_width 10",
+            color "red"
+            line_color "blue"
+            line_width 10
+        attribute "Texture", "texture ""Attributes.png""",
+            color_hsv 20 * time, 30%, 100%
+            texture "Attributes.png"
+        attribute "Transforms", "texture_transform { ... }",
+            color "white"
+            texture "Attributes.png"
+            texture_wrap true, true
+            texture_transform
+                scale 0.3 + 3 * sin time
+                rotate_z 25 * time
+                scale_x 2 / 0.8
+                translate -0.5, -0.5, 0
+        attribute "Extrusion", "extrude_depth 80",
+            color "red"
+            line_color "blue"
+            translate_z 50
+            rotate_y 20 * time
+            extrude_depth 80
 
+        attribute "Gradients", "radial_gradient ...",
+            color "white"
+            radial_gradient 50, 50, 70, 200, 80,
+                gradient_color   0%, "red",   100%
+                gradient_color  50%, "white",  60%
+                gradient_color 100%, "blue",   80%
+
+        attribute "Blending", "blend_function ""one"", ""one""",
+            color "red"
+            circle 0, 0, 40
+
+            color "white"
+            texture_unit 0
+            texture "Colors.png"
+            texture_wrap true, true
+            texture_transform
+                scale 0.3 + 3 * sin time
+                rotate_z -2 * time
+                scale_x 2 / 0.8
+                translate -0.5, -0.5, 0
+            if seconds mod 2 = 0 then
+                blend_function "src_alpha", "one_minus_src_alpha"
+            else
+                blend_function "one", "one"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Using locally and shape",
+// ----------------------------------------------------------------------------
+    title
+        text "Using "; code "locally"; text " and "; code "shape"
+    subtitle "Making local changes to attributes and transforms"
+    illustration 50%, "Locality.png"
+    left_column
+        * "Attributes and geometric transforms are cumulative"
+        * "Changes can be kept local to a code block with "; code "locally"
+        * "A shape can be made editable by putting inside a "; code "shape"
+        * "The mechanisms governing that behavior are relatively subtle"
+        §
+        * "Recommended: edit only small blank documents, then copy-paste and replace "; code "shape"; text " with "; code "locally"
+
+    picture
+        example_box 1, "Cumulative attributes", "locally-1.ddd",
+            import "locally-1.ddd"
+        example_box 2, "Local changes", "locally-2.ddd",
+            import "locally-2.ddd"
+        example_box 3, "Editable shape", "locally-3.ddd",
+            import "locally-3.ddd"
+        example_box 4, "Multiple editable shapes", "locally-4.ddd",
+            import "locally-4.ddd"
+
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #2: Building a clock", 25%, "Clock.png"
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+base_slide "3D objects",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Drawing complete 3D models"
+    illustration 50%, "3D Shapes.png"
+    picture
+        translate_y 120
+
+        light 0
+        light_position 1000, 1000, 1000
+        light_specular "white"
+
+        rotate_x 0.1 * mouse_y
+        rotate_y -0.1 * mouse_x + 180
+        rotate_x -105
+        object 0, 0, 0, 800, 800, 800, "models/Resurs3D_Audi_S5.obj"
+    picture
+        code_box 0, -200, 1300, 500, "Loading a 3D object",
+            colorize load_text "demos/loading-object.ddd"
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #3: 3D objects and lighting", 60%, "3D Shapes.png"
+// ----------------------------------------------------------------------------
 
 
 // Language

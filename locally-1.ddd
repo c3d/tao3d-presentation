@@ -1,0 +1,9 @@
+color "red"
+rectangle 50, 20
+translate_x 150
+rectangle 50, 20
+rotate_z 20 * time
+color "blue", 40%
+rectangle 50, 20
+translate_x 150
+rectangle 50, 20

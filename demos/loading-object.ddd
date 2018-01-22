@@ -1,0 +1,10 @@
+import ObjectLoader
+
+light 0
+light_position 1000, 1000, 1000
+light_specular "white"
+
+rotate_x 0.1 * mouse_y
+rotate_y -0.1 * mouse_x + 180
+rotate_x -105
+object 0, 0, 0, 500, 500, 500, "../models/Resurs3D_Audi_S5.obj"

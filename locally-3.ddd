@@ -1,0 +1,6 @@
+color "red"
+rectangle 0, 0, 200, 100
+
+shape
+    color "blue"
+    ellipse 0, 0, 200, 100

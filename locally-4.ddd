@@ -1,0 +1,6 @@
+for I in 1..10 loop
+    color_hsv 20 * I, 50%, 100%, 80%
+    shape
+        ellipse 100, 0, 200, 80
+    rotate_z -20
+    scale 90%

@@ -1,0 +1,5 @@
+import Slides
+
+slide "My first slide",
+    * "Using Tao3D is not very complicated"
+    * "You simply write bullet points here"

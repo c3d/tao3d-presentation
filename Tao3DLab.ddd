@@ -22,6 +22,7 @@ base_slide "What is Tao3D?",
         text "And what is """
         italic "Interactive 3D LaTeX Lisp"
         text """ supposed to mean?"
+    illustration 15%, "Tao3D.png"
 
     // We have pretty heavy animations here, control refresh precisely
     left_column
@@ -42,7 +43,7 @@ base_slide "What is Tao3D?",
         ** "Homoiconic (programs are data)"
 
     if smooth_step in 7.5..8.5 then
-        code_position 400, 80, 700, 800
+        code_position 400, -30, 700, 800
         redhat_theme "SeasonsGreetings"
     else
         code_move_default
@@ -64,8 +65,7 @@ base_slide "What is Tao3D?",
 
         example_box 7, "Documents", "latex-1.ddd",
             image 0, -250, 30%, 30%, "Text Based.png"
-        code_box_at_step 8, "Styles",
-            text load_text "latex-2.ddd"
+        example_box 8, "Styles", "latex-1.ddd", false
 
         example_box 10, "Functional", "lisp-1.ddd",
             import "lisp-1.ddd"
@@ -124,13 +124,26 @@ base_slide "Building Tao3D from git",
             text load_text "installation.txt"
 
 
+// ----------------------------------------------------------------------------
+base_slide "The most useful feature of Tao3D",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "The one menu entry you should use right after installation"
+    picture
+        only_at 1,
+            image 0, 0, 80%, 80%, "Tao3D Help Menu.png"
+        only_at 2,
+            image 0, 80, 50%, 50%, "Tao3D Help.png"
+        at_step 2
+
+
 // ============================================================================
 //
-section_slide "Programming Language",
+section_slide "The Tao3D Programming Language",
 //
 // ============================================================================
     title page_label
-    subtitle "What is different or unusual about the Tao3D language?"
+    subtitle "What is so different and unusual about it?"
     picture
         translate 500, 400, 50
         rotate_z -5
@@ -147,23 +160,42 @@ section_slide "Programming Language",
 
 
 // ----------------------------------------------------------------------------
+base_slide "Tao3D is an application of XL",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "An extensible language? What about dynamic documents?"
+    illustration 20%, "XLLogo.png"
+    story
+        * "XL stands for ""Extensible Language"""
+        * "It makes it easy to create Domain Specific Languages (DSLs)"
+        * "Tao3D began with the question: """; italic "What about documents?"; text """"
+        * "Tao3D is (by far) the largest DSL to date"
+    picture
+        at_step 3
+        code_box 0, -200, 1300, 300, "A simple slide",
+            colorize load_text "demos/simple-slide.ddd"
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #1: My first slide", 40%, "First Slide.png"
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
 base_slide "Representing the parse tree",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "Any program can be represented with only 8 node types"
+    illustration 20%, "Christmas Tree.png"
     left_column
-        § "A very simple parse-tree"
+        § "A very simple parse-tree (8 node types)"
         §
         § "Terminal nodes in the parse tree:"
-        * "Integer numbers: "; code "123"
-        ** "Separators: "; code "1_000_000"
-        ** "Based numbers: "; code "2#1001_0001"
-        ** "Exponents (positive): "; code "1e6"
-        * "Real numbers: "; code "3.14 16#F.0#e-4"
-        * "Text: "; code """ABC"""; text ", "; code "'X'"
-        text ", "; code "<< Hello >>"
-        * "Names: "; code "foo_bar2"
-        text ", symbols: "; code "++"
+        * "Integer numbers: "; code "42"
+        * "Real numbers: "; code "3.1415926"
+        * "Text: "; code """Hello"""; text ", "; code "'X'"
+        * "Symbols: "; code "X15"; text ", "; code "foo_bar"
+        text ", "; code "++"
         §
         § "Inner nodes in the parse tree:"
         * "Prefix: ";  code "sin 42"; text ", "; code "+42"
@@ -175,6 +207,290 @@ base_slide "Representing the parse tree",
     picture
         example_box 1..16, "Parse tree", "parse-tree.ddd",
             image 0, -150, 60%, 60%, "parse-tree.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "A few noticeable aspects",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Some peculiar aspects of how Tao3D parses source code"
+    story
+        § "Terminal nodes:"
+        * "Number separators: "; code "1_000_000"
+        text ", "; code "3.141_592_653"
+        * "Based numbers (integer and real, base 2-36): "; code "2#1001_1001"
+        text ", "; code "16#F.0#e-3"
+        §
+        § "Inner nodes:"
+        * "Dynamic precedence for operators"
+        * "No parentheses unless necessary: "; code "sin x"
+        * "All blocks are equivalent except for precedence"
+        * "Line sequences are represented by an infix ""End of line"""
+        * "Indentation is represented by an ""indent"" block"
+        §
+        § "Some special rules"
+        * "Expression vs. statement: "; code "write sin X, Y"
+        * "Spacing around operators: "; code "write -A * (B-C)"
+
+
+// ----------------------------------------------------------------------------
+base_slide "The tree rewrite operator",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "One operator to rule them all"
+    illustration 20%, "One Ring To Rule Them All.png"
+    left_column
+        * "The "; code "->"; text " operator (someday: "; code "is"; text ")"
+        * "Reads as "; italic "transforms into"
+        §
+        * "Variables"
+        * "Functions"
+        * "Operators"
+        * "Entire expressions"
+        * "Pattern matching"
+        * "Arbitrary notations"
+
+    picture
+        example_box 3, "Variable declaration", "rewrite-1.ddd", false
+        example_box 4, "Function declaration", "rewrite-2.ddd", false
+        example_box 5, "Operator declaration", "rewrite-3.ddd", false
+        example_box 6, "Expression declaration", "rewrite-4.ddd", false
+        example_box 7, "Pattern matching", "rewrite-5.ddd", false
+        example_box 8, "Arbitrary notations", "rewrite-6.ddd", false
+
+
+// ----------------------------------------------------------------------------
+base_slide "Dynamic compilation and updates",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D is designed to facilitate dynamic workflows"
+    illustration 20%, "Race Car.png"
+    story
+        § "Source code is translated dynamically using LLVM"
+        §
+        § "Tao3D will automatically reload:"
+        * "Source code"
+        * "Images"
+        * "Shaders"
+        * "Loaded text from files"
+        §
+        § "Use any editor you prefer for any of this"
+        §
+        §
+        § "We will use this for our live coding session"
+    picture
+        at_step 7
+        anchor
+            color "white"
+            image 300,  100, 50%, 50%, "Emacs Icon.png"
+            image 300, -150, 20%, 20%, "DxO Optics Pro.png"
+            image 500,  -50, 80%, 80%, "GIMP Icon.png"
+
+
+
+// ============================================================================
+//
+section_slide "Drawing stuff",
+//
+// ============================================================================
+    title page_label
+    subtitle "Fundamental drawing model for Tao3D"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        locally
+        image 0, 0, 50%, 50%, "3D Shark.jpg"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Drawing coordinates",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D uses a screen-centered 3D coordinates system"
+    illustration 25%, "Coordinates.png"
+    picture
+        translate 200 * fade_between(smooth_step, 3, 4), 60, 0
+        rotate_z 20 * fade_between(smooth_step, 4, 4)
+        rotate_x 20 * fade_between(smooth_step, 5, 9)
+        rotate_y (40 + 20 * sin time) * fade_between(smooth_step, 5, 9)
+
+
+        line_color "#777"
+        line_width 2
+        line_arrow -600,    0, none, 600,   0, arrowhead
+        line_arrow    0, -400, none,   0, 400, arrowhead
+        locally
+            rotate_x 90
+            line_arrow    0, -400, none,   0, 400, arrowhead
+        line_width 8
+        line_arrow  590,    0, none, 600,   0, arrowhead
+        line_arrow    0,  390, none,   0, 400, arrowhead
+        locally
+            rotate_x 90
+            line_arrow    0, 390, none,   0, 400, arrowhead
+
+        line_width 0
+        font "Arial", 25
+        color "black"
+        align 0%
+        vertical_align 100%
+        text_box   65,   30, 120, 60, { text "(0, 0)" }
+        text_box  555,   30, 120, 60, { text "(600, 0)" }
+        text_box -525,   30, 120, 60, { text "(-600, 0)" }
+        text_box   65, -350, 120, 60, { text "(-0, 400)" }
+        text_box   65,  380, 120, 60, { text "(0, 400)" }
+
+        at_step 1
+        translate_z 50 * fade_at(smooth_step, 6)
+        locally
+            if smooth_step >= 7.5 then
+                light 0
+                light_position 300, 500, 1000
+            extrude_depth 150 * fade_at(smooth_step, 7)
+            color "orange"
+            line_color "darkorange"
+            rectangle -250, -100, 500, 200
+            extrude_radius 10 * fade_at(smooth_step, 9)
+            line_color "darkred"
+            color "red"
+            ellipse 200, 100, 500, 100
+        style "code"
+        color "white"
+        align 50%
+        vertical_align 50%
+        text_box 200, 100, 500, 100,
+            text "ellipse 200, 100, 500, 100"
+        text_box -250, -100, 500, 200,
+            text "rectangle -250, -100, 500, 200"
+
+
+    picture
+        only_at 1,
+            text_box 300, -250, 400, 300,
+                style "comment"
+                paragraph "Shape coordinates are"
+                paragraph "X, Y, Width, Height"
+                paragraph "(X,Y) is at shape center"
+        only_at 2,
+            text_box 300, 250, 400, 300,
+                style "comment"
+                text "Initially, coordinates are in pixel units and centered on the screen"
+        only_at 3..4,
+            text_box -100, 100, 400, 300,
+                style "comment"
+                paragraph "Translation and rotation change the coordinate system"
+            text_box 450, -100, 400, 300,
+                style "code"
+                paragraph "translate 200, 0, 0"
+                at_step 4
+                paragraph "rotate_z 20"
+        only_at 5,
+            text_box -300, 200, 400, 300,
+                style "comment"
+                paragraph "The coordinate system is in 3D with Z ""poking out"" of the screen"
+            text_box 250, -100, 400, 300,
+                style "code"
+                paragraph "rotate_x 20"
+                paragraph "rotate_y 40 + 20 * sin time"
+        only_at 6,
+            text_box -300, 200, 400, 300,
+                style "comment"
+                paragraph "3D transforms are possible even for 2D shapes"
+            text_box 250, -100, 400, 300,
+                style "code"
+                paragraph "translate_z 50"
+        only_at 7..9,
+            text_box -300, 200, 400, 300,
+                style "comment"
+                paragraph "All 2D shapes can be extruded into 3D"
+                at_step 8
+                paragraph "and lighted"
+            text_box 350, -100, 600, 300,
+                style "code"
+                if smooth_step >= 7.5 then
+                    paragraph "light 0"
+                    paragraph "light_position 300, 1000, 1000"
+                paragraph "extrude_depth 150"
+                at_step 9
+                paragraph "extrude_radius 10"
+        at_step 9
+
+
+// ----------------------------------------------------------------------------
+base_slide "Shapes",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D offers a wealth of 2D and 3D shapes"
+    illustration 35%, "Basic shapes.png"
+    picture
+        rotate_x 0.1 * mouse_y
+        rotate_y -0.1 * mouse_x
+
+        show_shape 0, "square", {square 0, 0, 100}
+        show_shape 1, "circle", {circle 0, 0, 50}
+        show_shape 2, "rectangle", {rectangle 0, 0, 200, 100}
+        show_shape 3, "ellipse", {ellipse 0, 0, 200, 100}
+        show_shape 4, "rounded_rectangle", {rounded_rectangle 0, 0, 200, 100, 40 + 30 * sin time}
+        show_shape 5, "polygon", {polygon 0, 0, 200, 100, seconds mod 6 + 3}
+        show_shape 6, "star_polygon", {star_polygon 0, 0, 150, 150, seconds mod 8 + 5, 5}
+        show_3d_shape 7, "sphere", {sphere 0, 0, 0, 150}
+        show_3d_shape 8, "cube", {cube 0, 0, 0, 200, 100, 80}
+        show_3d_shape 9, "torus", {torus 0, 0, 0, 200, 50% + 30% * sin time}
+        show_3d_shape 10, "cone", {cone 0, 0, 0, 100, 50, 300; cone 0, 0, 0, 100, -50, 300}
+        show_3d_shape 11, "truncated_cone", {truncated_cone 0, 0, 0, 100, 50, 300, 50% + 30% * sin time; truncated_cone 0, 0, 0, 100, -50, 300, 50% + 30% * sin time}
+        show_shape 12, "text",
+            text_box 0, 0, 200, 100,
+                font "Brush Script MT", 80
+                align 50%
+                text "Hello"
+        show_shape 13, "path",
+            path
+                move_to 0, 0
+                line_to 50, 0
+                line_to 50, 50
+                quad_to -200, 50, -50, -50
+                quad_to -50, 100, 0, -50
+        show_shape 14, "arrow",
+            arrow        0,  30, 200, 50, 45, 30%
+            double_arrow 0, -30, 200, 50, 45, 30%
+        show_shape 15, "line",
+            line_width 10 * sin(0.113 * time)^2
+            line_color_hsv 30 * time, 0.9, 0.8
+            line_arrow -100,  60, hollow_circle, 100,  60, hollow_square
+            line_arrow -100,  30, none,          100,  30, none
+            line_arrow -100,   0, square,        100,   0, arrowhead
+            line_arrow -100, -30, diamond,       100, -30, rounded
+            line_arrow -100, -60, circle,        100, -60, square
+
+
+// ----------------------------------------------------------------------------
+base_slide "Colors",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Several color models are available for convenience"
+    illustration 20%, "Colors.png"
+    picture
+        attribute "By name", "color ""red""", { color "red" }
+        attribute "RGB", "color 30%, 50%, sin time", { color 30%, 50%, sin time }
+        attribute "HSV", "color_hsv 20*time, 50%, 100%", { color_hsv 20*time, 50%, 100% }
+        attribute "By web hex", "color ""#30F0CA""", { color "#30F0CA" }
+        attribute "By web rgb", "color ""rgb(200,30,10)""", { color "rgb(200,30,10)" }
+        attribute "By web hsv", "color ""hsv(200,30,200)""", { color "hsv(200,30,200)" }
+        attribute "Alpha", "color ""red"", sin time ^ 2", { color "red", sin time  ^ 2 }
+
+
+// ----------------------------------------------------------------------------
+base_slide "Shape attributes",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Attributes modify the drawing of shapes and are cumulative"
+    illustration 50%, "Attributes.png"
+    picture
+        attribute "Line color", "line_color ""blue""", { color "red"; line_color "blue"; line_width 2 }
+        attribute "Line width", "line_width 10", { color "red"; line_color "blue"; line_width 10 }
+        attribute "Texture", "texture ""Attributes.png""", { color_hsv 20 * time, 30%, 100%; texture "Attributes.png" }
+        attribute "Extrusion", "extrude_depth 80", { color "red"; line_color "blue"; translate_z 50; rotate_y 20 * time; extrude_depth 80 }
+
 
 
 // Language

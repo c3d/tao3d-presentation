@@ -340,6 +340,115 @@ presentation_author Body ->
 
 // ============================================================================
 //
+//    Showing shapes for feature presentation
+//
+// ============================================================================
+
+show_shape Position, Name, Body ->
+// ----------------------------------------------------------------------------
+//   Show a shape at the given position
+// ----------------------------------------------------------------------------
+    at_position Position, Name,
+        light 0
+        light_position 1000, 1000, 1000
+        color_hsv 20 * (Position + time) , 0.3, 0.8
+        extrude_depth 50 + 50 * sin time
+        extrude_radius 10 * sin (0.3 * time) ^ 4
+        Body
+
+
+show_3d_shape Position, Name, Body ->
+// ----------------------------------------------------------------------------
+//   Show a 3D shape at the given position
+// ----------------------------------------------------------------------------
+    at_position Position, Name,
+        light 0
+        light_position 1000, 1000, 1000
+        rotatex 25
+        rotatey 40 + 25 * time
+        color_hsv 20 * (Position + time) , 0.3, 0.8
+        Body
+
+
+at_position Position, Name, Body ->
+// ----------------------------------------------------------------------------
+//   Show a shape at a given position on screen
+// ----------------------------------------------------------------------------
+    contents 0,
+        translate Position mod 4 * 400 - 600, 450 - Position / 4 * 220, 0
+        text_box 0, 0, 350, 250,
+            style "code"
+            vertical_align 1
+            align 0.5
+            text Name
+        Body
+
+
+
+// ============================================================================
+//
+//    Showing attributes
+//
+// ============================================================================
+
+attribute Name, Example, Code ->
+// ----------------------------------------------------------------------------
+//   Illustrate an attribute
+// ----------------------------------------------------------------------------
+    at_current_step
+    attribute_at current_step + 0, Name, Example, Code
+
+
+attribute_at N:integer, Name, Example, Code ->
+// ----------------------------------------------------------------------------
+//   Illustrate an attribute at a given row
+// ----------------------------------------------------------------------------
+//   It is necessary to put that code in a separate function so that
+//   we properly save N in a closure in case the boxes refresh out of order
+
+    tbox -500, 650 - 110 * N, 300, 60,
+        style "story"
+        vertical_align 50%
+        text Name
+    tbox   0, 650 - 110 * N, 600, 60,
+        style "code"
+        vertical_align 50%
+        font_size 30
+        text Example
+    tbox 500, 650 - 110 * N, 300, 60, ""
+    locally
+        translate 500, 650 - 110 * N, 0
+        Code
+        align 50%
+        vertical_align 50%
+        rounded_rectangle 0, 0, 200, 80, 10
+
+
+
+// ============================================================================
+//
+//    Whole pages
+//
+// ============================================================================
+
+demo_slide Title, Size, Image ->
+// ----------------------------------------------------------------------------
+//    Time for a demo
+// ----------------------------------------------------------------------------
+    blank_slide Title,
+        picture
+            image 550, 400, Size, Size, Image
+        picture
+            box 0, 0, 1400, 800,
+                style "Title"
+                font_size 80
+                align 50%
+                vertical_align 30%
+                text Title
+
+
+// ============================================================================
+//
 //    Utilities
 //
 // ============================================================================
@@ -561,7 +670,7 @@ colorize Input:text ->
         "'.*'" ->
             purple regexp_captured 0
         // Comments
-        "(//.*$)|(/[*].*[*]/)" ->
+        - "(//.*\n)|(/[*].*[*]/)" ->
             red regexp_captured 0
         // Names
         "[A-Za-z][A-Za-z_0-9]*" ->
@@ -765,6 +874,15 @@ autoscale_image CX:real, CY:real, S1:real, S2:real, R:real, Image:text ->
 //   Draw an image with an auto-scale
 // ----------------------------------------------------------------------------
     image CX, CY, autoscale(CX,CY,S1,S2,R), autoscale(CX,CY,S1,S2,R), Image
+
+
+illustration Size, Name ->
+// ----------------------------------------------------------------------------
+//   Illustration for a picture
+// ----------------------------------------------------------------------------
+    picture
+        image 600, 600, Size, Size, Name
+
 
 
 

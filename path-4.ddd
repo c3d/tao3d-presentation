@@ -1,0 +1,10 @@
+color "yellow"
+line_color "blue"
+line_width 2
+
+translate mouse_x, mouse_y, 0
+path
+    rounded_rectangle 0, 0, 400, 200, 30
+    move_to -450, 0
+    font "Brush Script MT", 180
+    text "Eight Lines of Code"

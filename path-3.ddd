@@ -1,0 +1,9 @@
+color "purple", 80%
+line_color "darkred"
+line_width 3
+
+path
+    line_to 100, 200
+    quad_to -100, -200, 300, 100
+    ellipse 50, 30, 220, 80
+    rectangle 0, 0, 180, 45

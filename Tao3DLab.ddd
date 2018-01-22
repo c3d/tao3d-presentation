@@ -472,21 +472,19 @@ base_slide "Paths",
     left_column
         * "Paths from lines, quadrics, cubics"
         * "Arbitrary paths from code"
-        * "Add basic shapes"
-        * "The mechanisms governing that behavior are relatively subtle"
-        §
-        * "Recommended: edit only small blank documents, then copy-paste and replace "; code "shape"; text " with "; code "locally"
+        * "Combine basic shapes..."
+        * "... including text"
 
     right_picture
         example_box 1, "Path components", "path-1.ddd",
             import "path-1.ddd"
         example_box 2, "Arbitrary paths", "path-2.ddd",
-            translate_y -200
+            translate_y -250
             import "path-2.ddd"
         example_box 3, "Shapes in paths", "path-3.ddd",
-            translate_y -200
+            translate_y -250
             import "path-3.ddd"
-        example_box 4, "Multiple editable shapes", "path-4.ddd",
+        example_box 4, "Text in path", "path-4.ddd",
             import "path-4.ddd"
 
 

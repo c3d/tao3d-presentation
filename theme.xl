@@ -699,7 +699,7 @@ colorize Input:text ->
     regexp_parse_all Input,
         // Definition
         - "([^\n]*)(->)" ->
-            italic { orange regexp_captured 1 }
+            italic { orange { colorize regexp_captured 1 } }
             gray regexp_captured 2
         // Real numbers
         "[0-9_]+[.][0-9_]+(e[+-]?[0-9_]+)?" ->
@@ -724,10 +724,14 @@ colorize Input:text ->
             red regexp_captured 0
         // Names
         "[A-Za-z][A-Za-z_0-9]*" ->
-            navy regexp_captured 0
+            text regexp_captured 0
+        // Type declarations
+        "(:)[ ]*([A-Za-z][A-Za-z0-9_]*)" ->
+            gray regexp_captured 1
+            green regexp_captured 2
         // Symbols
         "[^A-Za-z0-9 \n]+" ->
-            text regexp_captured 0
+            navy regexp_captured 0
         // Spaces
         "[ \n]+" ->
             text regexp_captured 0

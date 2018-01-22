@@ -1,0 +1,2 @@
+image_URL -> "http://cc3d.free.fr/Car.jpg"
+image -800, -150, 50%, 50%, image_URL

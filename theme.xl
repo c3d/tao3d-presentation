@@ -262,7 +262,6 @@ theme_box "RedHat",Master:text,Style:text, X:real,Y:real,W:real,H:real ->
     false
 
 
-
 // ============================================================================
 //
 //    Layout for the various kind of pages
@@ -301,6 +300,52 @@ theme_layout "RedHat", Master:text ->
     flow -400, -100,  700, 800, "left"
     flow  400, -100,  700, 800, "right"
 
+
+theme_picture "RedHat", "blank", Body:block ->
+// ----------------------------------------------------------------------------
+//    Default picture box (keep consistent with layout below)
+// ----------------------------------------------------------------------------
+    contents 0,
+        color "white"
+        Body
+
+
+theme_picture "RedHat", Master:text, Body:block ->
+// ----------------------------------------------------------------------------
+//    Default picture box (keep consistent with layout below)
+// ----------------------------------------------------------------------------
+    contents 0,
+        translate_y -100
+        color "white"
+        Body
+
+
+theme_left_column_picture "RedHat", Master:text, Body:block ->
+// ----------------------------------------------------------------------------
+//    Default left column picture (keep consistent with layout below)
+// ----------------------------------------------------------------------------
+    contents 0,
+        translate -400, -100, 0
+        color "white"
+        Body
+
+
+theme_right_column_picture "RedHat", Master:text, Body:block ->
+// ----------------------------------------------------------------------------
+//    Default right column picture (keep consistent with layout below)
+// ----------------------------------------------------------------------------
+    contents 0,
+        translate 400, -100, 0
+        color "white"
+        Body
+
+
+
+// ============================================================================
+//
+//   Custom layout
+//
+// ============================================================================
 
 pros Body ->
 // ----------------------------------------------------------------------------
@@ -586,8 +631,8 @@ code_box Title, Body ->
     code_box code_x, code_y, code_w, code_h, Title, Body
 
 
-code_x -> 400.0
-code_y -> 100.0
+code_x ->   0.0
+code_y ->   0.0
 code_w -> 700.0
 code_h -> 800.0
 code_position X:real, Y:real, W:real, H:real ->
@@ -604,7 +649,7 @@ code_move_default ->
 // ----------------------------------------------------------------------------
 //   Restore to default position
 // ----------------------------------------------------------------------------
-    code_move 400, 100, 700, 800
+    code_move 0, 0, 700, 800
 
 
 code_move X:real, Y:real, W:real, H:real ->
@@ -626,20 +671,22 @@ code_box_at_step N, Title, Body ->
             code_box Title, Body
 
 
-X in A..B -> X >= A and X <= B
-X in A    -> X = A
-
-
 example_box N, Title, File, Body ->
 // ----------------------------------------------------------------------------
 //   Show an example in a code box
 // ----------------------------------------------------------------------------
     only_at N,
         code_box Title,
-            if smooth_step in N then
+            // Accelerate convergence for this slide
+            if abs(smooth_step - step) >= 0.001 then
+                if abs(smooth_step - step) <= 5% then
+                    smooth_step := step
+
+            if abs(smooth_step - step) <= 0.001 then
                 colorize load_text File
             else
                 text load_text File
+
         locally
             translate code_x, code_y, 20
             Body

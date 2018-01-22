@@ -43,13 +43,13 @@ base_slide "What is Tao3D?",
         ** "Homoiconic (programs are data)"
 
     if smooth_step in 7.5..8.5 then
-        code_position 400, -30, 700, 800
+        code_position -75, -30, 700, 800
         redhat_theme "SeasonsGreetings"
     else
         code_move_default
         redhat_theme "RedHat"
 
-    picture
+    right_picture
         example_box 2, "Programming language", "example-1.ddd",
             import "example-1.ddd"
         example_box 3, "Real-time", "example-2.ddd",
@@ -143,7 +143,7 @@ section_slide "The Tao3D Programming Language",
 //
 // ============================================================================
     title page_label
-    subtitle "What is so different and unusual about it?"
+    subtitle "What is different and unusual about it?"
     picture
         translate 500, 400, 50
         rotate_z -5
@@ -204,9 +204,9 @@ base_slide "Representing the parse tree",
         * "Block: "; code "(42)"; text ", "; code "[42]"
         text ", "; code "{42}"; text ", indentation"
 
-    picture
+    right_picture
         example_box 1..16, "Parse tree", "parse-tree.ddd",
-            image 0, -150, 60%, 60%, "parse-tree.png"
+            image 0, -120, 55%, 55%, "parse-tree.png"
 
 
 // ----------------------------------------------------------------------------
@@ -238,7 +238,7 @@ base_slide "The tree rewrite operator",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "One operator to rule them all"
-    illustration 20%, "One Ring To Rule Them All.png"
+    illustration 15%, "One Ring To Rule Them All.png"
     left_column
         * "The "; code "->"; text " operator (someday: "; code "is"; text ")"
         * "Reads as "; italic "transforms into"
@@ -250,7 +250,7 @@ base_slide "The tree rewrite operator",
         * "Pattern matching"
         * "Arbitrary notations"
 
-    picture
+    right_picture
         example_box 3, "Variable declaration", "rewrite-1.ddd", false
         example_box 4, "Function declaration", "rewrite-2.ddd", false
         example_box 5, "Operator declaration", "rewrite-3.ddd", false
@@ -264,7 +264,7 @@ base_slide "Dynamic compilation and updates",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "Tao3D is designed to facilitate dynamic workflows"
-    illustration 20%, "Race Car.png"
+    illustration 15%, "Race Car.png"
     story
         § "Source code is translated dynamically to machine code using LLVM"
         §
@@ -468,14 +468,14 @@ base_slide "Colors",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "Several color models are available for convenience"
-    illustration 20%, "Colors.png"
+    illustration 15%, "Colors.png"
     picture
-        attribute "By name", "color ""red""", { color "red" }
+        attribute "Name", "color ""red""", { color "red" }
         attribute "RGB", "color 30%, 50%, sin time", { color 30%, 50%, sin time }
         attribute "HSV", "color_hsv 20*time, 50%, 100%", { color_hsv 20*time, 50%, 100% }
-        attribute "By web hex", "color ""#30F0CA""", { color "#30F0CA" }
-        attribute "By web rgb", "color ""rgb(200,30,10)""", { color "rgb(200,30,10)" }
-        attribute "By web hsv", "color ""hsv(200,30,200)""", { color "hsv(200,30,200)" }
+        attribute "Web hex", "color ""#30F0CA""", { color "#30F0CA" }
+        attribute "Web RGB", "color ""rgb(200,30,10)""", { color "rgb(200,30,10)" }
+        attribute "Web HSV", "color ""hsv(200,30,200)""", { color "hsv(200,30,200)" }
         attribute "Alpha", "color ""red"", sin time ^ 2", { color "red", sin time  ^ 2 }
 
 
@@ -484,7 +484,7 @@ base_slide "Shape attributes",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "Attributes modify the drawing of shapes and are cumulative"
-    illustration 50%, "Attributes.png"
+    illustration 40%, "Attributes.png"
     picture
         attribute "Line color", "line_color ""blue""",
             color "red"
@@ -545,7 +545,7 @@ base_slide "Using locally and shape",
     title
         text "Using "; code "locally"; text " and "; code "shape"
     subtitle "Making local changes to attributes and transforms"
-    illustration 50%, "Locality.png"
+    illustration 40%, "Locality.png"
     left_column
         * "Attributes and geometric transforms are cumulative"
         * "Changes can be kept local to a code block with "; code "locally"
@@ -554,7 +554,7 @@ base_slide "Using locally and shape",
         §
         * "Recommended: edit only small blank documents, then copy-paste and replace "; code "shape"; text " with "; code "locally"
 
-    picture
+    right_picture
         example_box 1, "Cumulative attributes", "locally-1.ddd",
             import "locally-1.ddd"
         example_box 2, "Local changes", "locally-2.ddd",
@@ -603,10 +603,59 @@ demo_slide "Live Coding #3: 3D objects and lighting", 60%, "3D Shapes.png"
 // ----------------------------------------------------------------------------
 
 
-// Language
-// Drawings
+
+// ============================================================================
+//
+section_slide "Images, movies and textures",
+//
+// ============================================================================
+    title page_label
+    subtitle "So many ways to make things perty"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        locally
+        image 0, 0, 50%, 50%, "3D-TV.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Images, pictures and drawings",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Loading images from files or URLs"
+    illustration 25%, "3D Drawing.png"
+
+    left_column
+        * "All common image formats"
+        * "Support for transparency"
+        * "Load images from URLs"
+        * "Images can be used as textures"
+        * "Dynamically-generated textures"
+        * "Colorization"
+
+
+    right_picture
+        example_box 1, "Image from file", "image-1.ddd",
+            import "image-1.ddd"
+        example_box 2, "Transparent image", "image-2.ddd",
+            import "image-2.ddd"
+        example_box 3, "Image from URL", "image-3.ddd",
+            import "image-3.ddd"
+        example_box 4, "Image textures", "image-4.ddd",
+            import "image-4.ddd"
+        example_box 5, "Dynamic texture", "image-5.ddd",
+            import "image-5.ddd"
+        example_box 6, "Dynamic texture", "image-6.ddd",
+            import "image-6.ddd"
+
+
+// Movies
 // Slides
-// Themes
+// Themes (using)
+// Themes (creating)
+// Shaders
+// NodeJS
+
 
 
 // ----------------------------------------------------------------------------

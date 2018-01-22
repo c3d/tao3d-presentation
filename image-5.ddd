@@ -1,0 +1,7 @@
+dynamic_texture 16, 16,
+    color "red"
+    line_color "blue"
+    circle 0, 0, 4 + 2 * sin time
+
+texture_mag_filter "nearest"
+rectangle 0, -100, 400, 400

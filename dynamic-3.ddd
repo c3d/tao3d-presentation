@@ -1,0 +1,20 @@
+dynamic_texture 256, 256,
+  text_box 0, 0, 256, 256,
+    color "white"
+    align 0%
+    vertical_align 0%
+    font "Arial", 250, bold
+    paragraph integer(time * 100 mod 100)
+texture_wrap true, true
+texture_transform
+    scale 20 + 5 * sin (0.3 * time)
+    rotate_z -15 * sin(0.1 * time)
+    translate -0.5, -0.5, 0
+color "blue"
+translate -800, -200, 0
+path
+    rectangle 512, 512
+    rectangle 512, 512
+    move_to -256,    0
+    font "Impact", 240
+    text "Hello"

@@ -1,0 +1,2 @@
+translate 300*sin(1.4*time), 300*cos time, 0
+image 0, 0, 50%, 50%, "3D Shapes.png"

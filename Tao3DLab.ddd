@@ -464,6 +464,33 @@ base_slide "Shapes",
 
 
 // ----------------------------------------------------------------------------
+base_slide "Paths",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "A way to draw arbitrary shapes"
+    illustration 60%, "Path.png"
+    left_column
+        * "Paths from lines, quadrics, cubics"
+        * "Arbitrary paths from code"
+        * "Add basic shapes"
+        * "The mechanisms governing that behavior are relatively subtle"
+        §
+        * "Recommended: edit only small blank documents, then copy-paste and replace "; code "shape"; text " with "; code "locally"
+
+    right_picture
+        example_box 1, "Path components", "path-1.ddd",
+            import "path-1.ddd"
+        example_box 2, "Arbitrary paths", "path-2.ddd",
+            translate_y -200
+            import "path-2.ddd"
+        example_box 3, "Shapes in paths", "path-3.ddd",
+            translate_y -200
+            import "path-3.ddd"
+        example_box 4, "Multiple editable shapes", "path-4.ddd",
+            import "path-4.ddd"
+
+
+// ----------------------------------------------------------------------------
 base_slide "Colors",
 // ----------------------------------------------------------------------------
     title page_label
@@ -565,7 +592,6 @@ base_slide "Using locally and shape",
             import "locally-4.ddd"
 
 
-
 // ----------------------------------------------------------------------------
 demo_slide "Live Coding #2: Building a clock", 25%, "Clock.png",
 // ----------------------------------------------------------------------------
@@ -593,6 +619,7 @@ base_slide "3D objects",
         rotate_y -0.1 * mouse_x + 180
         rotate_x -105
         object 0, 0, 0, 800, 800, 800, "models/Resurs3D_Audi_S5.obj"
+
     picture
         code_box 0, -200, 1300, 500, "Loading a 3D object",
             colorize load_text "demos/loading-object.ddd"
@@ -630,29 +657,53 @@ base_slide "Images, pictures and drawings",
         * "Support for transparency"
         * "Load images from URLs"
         * "Images can be used as textures"
-        * "Dynamically-generated textures"
         * "Colorization"
+        * "Texture dimensions"
+
+    right_picture
+        example_box 1, "Image from file", "picture-1.ddd",
+            import "picture-1.ddd"
+        example_box 2, "Transparent image", "picture-2.ddd",
+            import "picture-2.ddd"
+        example_box 3, "Image from URL", "picture-3.ddd",
+            import "picture-3.ddd"
+        example_box 4, "Image textures", "picture-4.ddd",
+            import "picture-4.ddd"
+        example_box 5, "Colorization", "picture-5.ddd",
+            import "picture-5.ddd"
+        example_box 6, "Texture dimensions", "picture-6.ddd",
+            import "picture-6.ddd"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Dynamic textures",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Generate textures using code"
+    illustration 15%, "Dynamic Texture.png"
+
+    left_column
+        * "Generate texture with code"
+        * "Accelerate rendering"
+        * "Texturing effects"
 
 
     right_picture
-        example_box 1, "Image from file", "image-1.ddd",
-            import "image-1.ddd"
-        example_box 2, "Transparent image", "image-2.ddd",
-            import "image-2.ddd"
-        example_box 3, "Image from URL", "image-3.ddd",
-            import "image-3.ddd"
-        example_box 4, "Image textures", "image-4.ddd",
-            import "image-4.ddd"
-        example_box 5, "Dynamic texture", "image-5.ddd",
-            import "image-5.ddd"
-        example_box 6, "Dynamic texture", "image-6.ddd",
-            import "image-6.ddd"
+        example_box 1, "Dynamic texture", "dynamic-1.ddd",
+            import "dynamic-1.ddd"
+        example_box 2, "Acceleration", "dynamic-2.ddd",
+            import "dynamic-2.ddd"
+        example_box 3, "Texturing effect", "dynamic-3.ddd",
+            import "dynamic-3.ddd"
 
 
+// Paths
+// Text layout
 // Movies
 // Slides
 // Themes (using)
 // Themes (creating)
+// RegExp
 // Shaders
 // NodeJS
 

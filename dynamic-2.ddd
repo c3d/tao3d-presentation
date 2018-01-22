@@ -1,0 +1,9 @@
+dynamic_texture 512, 512,
+    for I in 0..1000 loop
+        color_hsv I, 100%, 1.0 - I * 0.0007
+        circle 0.2*I*sin I, 0.2*I* cos I, 3
+
+locally
+    translate_y -150
+    rotate_z 20 * time
+    circle 0, 0, 256

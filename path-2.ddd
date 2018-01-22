@@ -1,0 +1,13 @@
+color "darkorange"
+line_color "darkgreen"
+line_width 6
+path
+  quad_flower 80, 150
+
+quad_flower R:real, S:real ->
+  move_to 0, S
+  for I in 0..15 loop
+    quad_r R, S, (2*I+1)*pi/16, (2*I+2)*pi/16
+
+quad_r R:real, S:real, A:real, B:real ->
+  quad_to R*sin A, R*cos A, S*sin B, S*cos B

@@ -24,7 +24,6 @@ base_slide "What is Tao3D?",
         text """ supposed to mean?"
     illustration 15%, "Tao3D.png"
 
-    // We have pretty heavy animations here, control refresh precisely
     left_column
         stepping
         * "Tao3D is a programming language for real-time interactive 3D"
@@ -369,7 +368,7 @@ base_slide "Drawing coordinates",
             text_box 300, -250, 400, 300,
                 style "comment"
                 paragraph "Shape coordinates are"
-                paragraph "X, Y, Width, Height"
+                paragraph { code "X, Y, Width, Height" }
                 paragraph "(X,Y) is at shape center"
         only_at 2,
             text_box 300, 250, 400, 300,
@@ -470,8 +469,8 @@ base_slide "Paths",
     subtitle "A way to draw arbitrary shapes"
     illustration 60%, "Path.png"
     left_column
-        * "Paths from lines, quadrics, cubics"
-        * "Arbitrary paths from code"
+        * "Built from lines, quadrics, cubics"
+        * "Arbitrary paths using code"
         * "Combine basic shapes..."
         * "... including text"
 

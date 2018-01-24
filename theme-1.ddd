@@ -1,0 +1,7 @@
+import BlackAndWhiteThemes
+import WhiteChristmasTheme
+import SeasonsGreetingsTheme
+import PastelTrianglesTheme
+import PastelTrianglesTheme
+
+theme "PastelTriangles"

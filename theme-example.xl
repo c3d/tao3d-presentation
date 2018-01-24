@@ -1,0 +1,19 @@
+import Slides
+import Animate
+
+theme "RedHat"
+
+theme_align "RedHat", "main", "title"           -> align_left
+theme_align "RedHat", "main", "subtitle"        -> align_left
+theme_color "RedHat", "main", Theme             -> color "white"
+theme_color "RedHat", "section", Theme          -> color "white"
+theme_font  "RedHat", Master, "title"           -> font "Overpass", weight 300
+theme_size  "RedHat", Master, "title"           -> 60
+theme_font  "RedHat", Master, "subtitle"        -> font "Overpass"
+theme_size  "RedHat", Master, "subtitle"        -> 35
+theme_color "RedHat", Master, "subtitle"        -> color "#A21400"
+theme_color "RedHat", Master, "picture"         -> color "white"
+theme_font  "RedHat", Master, "story"           -> font "Overpass", "Arial"
+theme_size  "RedHat", Master, "story"           -> 40
+theme_align "RedHat", Master, "story",N         -> margins 40*N, 0
+theme_color "RedHat", Master, "story",N         -> color "black", 0.99-0.2*N

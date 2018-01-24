@@ -1152,13 +1152,25 @@ base_slide "The theme.xl file",
             colorize load_text "theme-example.xl"
 
 
-// Animations
-// Slides
-// Themes (using)
-// Themes (creating)
 // RegExp
 // Shaders
 // NodeJS
+
+
+
+// ============================================================================
+//
+section_slide "Oh, and one more thing...",
+//
+// ============================================================================
+    title page_label
+    subtitle "Tao3D is connected. And this opens a world of possibilities"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        image 0, 0, 80%, 80%, "Design.png"
+
+import "Quizz.ddd"
 
 
 

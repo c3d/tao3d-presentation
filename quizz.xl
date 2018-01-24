@@ -1,0 +1,236 @@
+// ****************************************************************************
+//  quizz.xl                                                       Tao project
+// ****************************************************************************
+//
+//   File Description:
+//
+//     Handle quizz setup and communication with the server
+//
+//
+//
+//
+//
+//
+//
+//
+// ****************************************************************************
+//  (C) 2011 Christophe de Dinechin <christophe@taodyne.com>
+//  (C) 2011 Taodyne SAS
+// ****************************************************************************
+
+import NetworkAccess
+
+// quizz_url -> "http://www.taodyne.com/old_quizz/"
+// quizz_public_url -> "http://www.taodyne.com/old_quizz/"
+// "http://prez.at/dfcg"
+quizz_url -> "http://blackbox.dinechin.org/taoquizz/"
+quizz_public_url -> "http://blackbox.dinechin.org/taoquizz"
+
+
+quizz Question:text, Body ->
+// ----------------------------------------------------------------------------
+//    Setup a new quizz
+// ----------------------------------------------------------------------------
+    title_slide Question,
+
+        // Initialize the state of the new question
+        quizz_setup Question, Body
+
+        // Draw the quizz
+        quizz_draw Question, Body
+
+
+    title_slide Question & " ",
+
+        // Initialize the state of the question
+        quizz_setup Question, Body
+
+        // Draw the quizz
+        quizz_answers Question, Body
+
+
+
+quizz_setup Question:text, Body ->
+// ----------------------------------------------------------------------------
+//    Setup a new Quizz
+// ----------------------------------------------------------------------------
+    locally
+        if page_time < 1 then
+            quizz_index := 0
+            quizz_set_url := quizz_url & "set.php?q=" & Question
+            quizz_state := "setup"
+
+            // Evaluate body
+            Body
+
+            // Add picture if there is one
+            if quizz_picture <> "" then
+                quizz_option "picture=" & quizz_picture
+
+            // Request URL and move to next page
+            get_url_text quizz_set_url
+            // writeln "Q=", quizz_set_url
+        else
+            no_refresh_on TimerEvent
+
+
+quizz_option T:text ->
+// ----------------------------------------------------------------------------
+//   Send an option directly to the server
+// ----------------------------------------------------------------------------
+    quizz_set_url := quizz_set_url & "&" & T
+
+
+quizz_draw Question:text, Body ->
+// ----------------------------------------------------------------------------
+//    Default drawing for a quizz
+// ----------------------------------------------------------------------------
+    story
+        theme_style theme, slide_master, "quiz"
+        align 0
+        quizz_index := 0
+        quizz_state := "draw"
+        quizz_picture := ""
+        paragraph_space 40, 40
+        margins 300, 100
+        Body
+        time
+
+    right_picture
+        if quizz_picture <> "" then
+            color "white"
+            rotatez 5 * sin (2.3 * time)
+            image 0, 0, quizz_size, quizz_size, quizz_picture
+
+
+
+quizz_answers Question:text, Body ->
+// ----------------------------------------------------------------------------
+//    Default drawing for a quizz
+// ----------------------------------------------------------------------------
+    quizz_draw Question,
+        quizz_state := "answer"
+        Body
+
+
+answer T:text -> answer T, 0
+answer T:text, Score:integer ->
+// ----------------------------------------------------------------------------
+//    Add an answer to a Quizz
+// ----------------------------------------------------------------------------
+    answer_internal quizz_state, quizz_index, T, Score
+    quizz_index := quizz_index + 1
+
+
+answer_internal "setup", A:integer, T:text, Score:integer ->
+// ----------------------------------------------------------------------------
+//   Add an answer to a quizz
+// ----------------------------------------------------------------------------
+    quizz_set_url := quizz_set_url & "&a" & text A & "=" & text Score & "|" & T
+
+
+answer_internal_draw A:integer, T:text, Score:integer, Show:real ->
+// ----------------------------------------------------------------------------
+//    Internal code for drawing Quizz information
+// ----------------------------------------------------------------------------
+    paragraph_break
+
+    anchor
+        light 0
+        light_position 0, 2000, 1000
+        translate 30, -20, 150
+        color_hsv 3 * (time + 25 * A) , 0.3, 0.8, Show
+        quizz_graph quizz_index, real(quizz_score A)
+
+    anchor
+        light 0
+        light_position 200, 200, 200
+        color_hsv 3 * (time + 25 * A) , 0.3, 0.8
+        frame_texture 256, 128,
+            color "white"
+            rectangle 256, 128
+            color "black"
+            font "Cochin", bold, 70
+            move_to -5, -20, 0
+            text text(A+1)
+        translate -60, 10, 15
+        rotatey 0 + 35 * sin (5 * time + A)
+        sphere 50
+
+    text T
+
+
+answer_internal "draw", A:integer, T:text, Score:integer ->
+// ----------------------------------------------------------------------------
+//   Draw a paragraph for a quizz
+// ----------------------------------------------------------------------------
+    answer_internal_draw A, T, Score, fade_at(page_time, 30)
+
+
+answer_internal "answer", A:integer, T:text, Score:integer ->
+// ----------------------------------------------------------------------------
+//   Draw a paragraph for a quizz
+// ----------------------------------------------------------------------------
+    if Score > 0 then
+        color "white"
+    else
+        color "#777"
+    answer_internal_draw A, T, Score, 1
+
+
+quizz_score I:integer ->
+// ----------------------------------------------------------------------------
+//   Return the score for the given index
+// ----------------------------------------------------------------------------
+    get_url_text quizz_url & "value.php?a=" & text I
+
+
+quizz_reset_question Question:text->
+// ----------------------------------------------------------------------------
+//    Reset the current question
+// ----------------------------------------------------------------------------
+    get_url_text quizz_url & "clear.php?q=" & Question
+
+
+quizz_set_unique ->
+// ----------------------------------------------------------------------------
+//    Select 'unique' mode
+// ----------------------------------------------------------------------------
+    quizz_set_url := quizz_set_url & "&unique=1"
+
+
+quizz_index -> 0
+quizz_set_url -> ""
+quizz_state -> "setup"
+
+
+quizz_graph Index:integer, Value:real ->
+// ----------------------------------------------------------------------------
+//   Draw a graph item
+// ----------------------------------------------------------------------------
+    disabled
+        light 0, false
+        text_box -130, 0, 100, 50,
+            align 0.5
+            vertical_align 0.5
+            color "white"
+            font "Arial", 20
+            text text Value
+    rotatey 95
+    cylinder 0, 0, 1 + 3 * Value, 10, 10, 3 + 6 * Value
+
+
+quizz_picture -> ""
+quizz_size -> 1.0
+quizz_picture X:text -> quizz_picture := X; quizz_size := 1.0
+quizz_picture X:text, S:real -> quizz_picture := X; quizz_size := S
+
+quizz_movie Movie:text ->
+    box 0, 0, 1800, 1200, false
+    movie_texture Movie
+    movie_only Movie
+    color "white"
+    rounded_rectangle 0, 0, 1600, 900, 20
+    if movie_done Movie then
+        movie_drop Movie
+        goto_page page_name (page_number+1)

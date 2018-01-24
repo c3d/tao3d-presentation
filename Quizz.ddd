@@ -1,0 +1,133 @@
+import "quizz.xl"
+
+quizz_howto
+
+quizz "Which operating system are you using?",
+    subtitle "There is only one good answer"
+    answer "RHEL", 1
+    answer "CentOS", 1
+    answer "Fedora", 1
+    answer "SuSE", 1
+    answer "Ubuntu", 1
+    answer "Debian", 1
+    answer "Gentoo", 1
+    answer "Other Linux", 1
+    answer "Free BSD"
+    answer "macOS"
+    answer "Windows 10"
+    answer "Windows 95"
+    quizz_picture "http://www.bayanmall.org/blog/wp-content/uploads/2016/01/OPERATING-SYSTEM.jpg", 20%
+
+quizz "What is the make of this car?",
+    answer "Ferrari"
+    answer "Peugeot", 1
+    answer "Lamborghini"
+    answer "Lada"
+    quizz_picture "http://cc3d.free.fr/Car.jpg", 50%
+
+quizz "Did you enjoy this talk?",
+    answer "You bet, it was great!", 1
+    answer "No, I am still sleeping"
+    answer "What talk?"
+    quizz_picture "http://icons.iconarchive.com/icons/codicode/smiley/256/happy-icon.png", 150%
+
+
+
+
+// ============================================================================
+//
+//    How to use the Quzz
+//
+// ============================================================================
+
+quizz_howto ->
+// ----------------------------------------------------------------------------
+//    Mode d'emploi du Quizz
+// ----------------------------------------------------------------------------
+    quizz_emploi "How to use this quizz",
+        quizz_iphone seconds / 3 mod 6
+        color "white"
+        image 800, -50, 1.8, 1.8, "http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=" & quizz_public_url & "&chld=H"
+
+    quizz_emploi "Quizz - Web page",
+        quizz_iphone seconds / 3 mod 6
+        image 800, 0, 0.5, 0.5, "Exemple 1.png"
+
+        locally
+            show fade_in(page_time, 5)
+            color "white", 0.2
+            line_color "white"
+            line_width 3
+            rr S:real -> rounded_rectangle 800, 180, 600+S, 50+S, 30
+            rr 20 * sin (2*time) ^ 36
+
+    quizz_emploi "Quizz - Résults",
+        quizz_iphone seconds / 3 mod 6
+        image 800, 0, 0.5, 0.5, "Exemple 2.png"
+
+        locally
+            show fade_in(page_time, 5)
+            color "white", 0.2
+            line_color "lightblue"
+            line_width 3
+            rc S:real -> circle 800, -150, 50+S
+            rc 20 * sin (2*time) ^ 36
+
+
+
+quizz_emploi Title:text, Body ->
+// ----------------------------------------------------------------------------
+//    Page d'information sur le Quizz
+// ----------------------------------------------------------------------------
+    base_slide Title,
+        title "How to use this quizz"
+        subtitle
+            paragraph "Connect your smarthpones to "
+            paragraph { code quizz_public_url }
+        picture
+            box 0, 250, 1600, 800,
+                vertical_align 0.5
+                align 0.5
+
+        picture
+            color "white"
+            Body
+
+
+iphone Z:real, X:real, T:text, Color:text ->
+// ----------------------------------------------------------------------------
+//    Set the iPhone position
+// ----------------------------------------------------------------------------
+    RZT -> 0.0
+    RXT -> 0.0
+    RZ  -> 0.0
+    RX  -> 0.0
+
+    translate -400, 100, 300
+    locally
+        RZT := Z
+        RXT := X
+        interpolate 0.1, RZT, RZ
+        interpolate 0.05, RXT, RX
+
+        light 0
+        light_position 1000, 1000, 1000
+        rotatez RZ
+        rotatex RX
+        object 0, 0, -150, 500, 500, 500, "models/Apple_Iphone2.3DS"
+        time
+
+    locally
+        text_box 0, -300, 800, 600,
+            font "Arial Rounded MT Bold", 50
+            color Color
+            align 0.5
+            vertical_align 0.5
+            text T
+
+quizz_iphone 0 -> iphone 90, -90, "Very good", tao "green"
+quizz_iphone 1 -> iphone 0, -90, "OK", tao "green"
+quizz_iphone 2 -> iphone -90, -90, "Perfect", tao "green"
+quizz_iphone 3 -> iphone -45, -90, "You can do better", tao "orange"
+quizz_iphone 4 -> iphone -0, 90, "No", tao "red"
+quizz_iphone 5 -> iphone 0, -10, "Really not", tao "red"

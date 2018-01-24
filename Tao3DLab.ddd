@@ -1092,6 +1092,11 @@ base_slide "Reversible animations",
             import "reversible-4.ddd"
 
 
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #7: Events and animations", 50%, "Timeline.png"
+// ----------------------------------------------------------------------------
+
+
 
 // ============================================================================
 //
@@ -1123,7 +1128,7 @@ base_slide "Using pre-existing themes",
 
 
 // ----------------------------------------------------------------------------
-demo_slide "Live Coding #7: Using existing themes", 100%, "Graphics Design.png"
+demo_slide "Live Coding #8: Using existing themes", 100%, "Graphics Design.png"
 // ----------------------------------------------------------------------------
 
 

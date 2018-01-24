@@ -1,0 +1,7 @@
+background -500,
+    color "white"
+    image 0, 0, 150%, 150%, "Background.png"
+
+contents 200,
+    color "white"
+    image 400, 0, 150%, 150%, "Tux.png"

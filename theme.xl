@@ -231,7 +231,7 @@ theme_background "RedHat", Master ->
         rectangle bottom_width, 2
     locally
         translate bottom_width/2 - 60, bottom_offset, -50
-        color "white"
+        color "white", 99%
         image 0, 0, 100%, 100%, "RedHat-BlackText.png"
     locally
         translate 0, bottom_offset, -50

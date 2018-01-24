@@ -930,11 +930,59 @@ base_slide "Text boxes and text layout",
 
 
 // ----------------------------------------------------------------------------
+base_slide "Auto-scaling",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "The difference between background and content"
+
+    background -500,
+        color "white", 25% * fade_at(smooth_step, 3) - 15% * fade_at(smooth_step, 6)
+        image 0, 0, 150%, 150%, "Background.png"
+
+    contents 200,
+        color "white", 95% * fade_at(smooth_step, 4) - 75% * fade_at(smooth_step, 6)
+        image 400, 0, 100%, 100%, "Tux.png"
+
+    contents 100,
+        color "white", 99%
+        image 600, 500, 20%, 20%, "Tux.png"
+    left_column
+        * "You can control layout manually"
+        * "But some things are frequent"
+        ** "A background image (crop)"
+        ** "Significant content (fit)"
+        * "What about aspect resizing?"
+        ** "Using "; code "background"; text " and "; code "contents"
+        ** "Those also deal with depth (compensate for perspective)"
+    right_picture
+        example_box 6..7, "Background and contents", "autoscale.ddd", false
+
+
+// ----------------------------------------------------------------------------
 demo_slide "Live Coding #6: Slide layouts", 40%, "pinky-decor.png"
 // ----------------------------------------------------------------------------
 
 
-// Movies
+// ============================================================================
+//
+section_slide "Themes",
+//
+// ============================================================================
+    title page_label
+    subtitle "Themes let you easliy adjust the look and behavior of your slides"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        locally
+            radial_gradient 64, 64, 64, 128, 128,
+                gradient_color   0%, "white", 80%
+                gradient_color  80%, "white", 60%
+                gradient_color 100%, "white",  0%
+            ellipse 0, 0, 500, 400
+        image 0, 0, 80%, 80%, "Text Layout.png"
+
+
+// Animations
 // Slides
 // Themes (using)
 // Themes (creating)

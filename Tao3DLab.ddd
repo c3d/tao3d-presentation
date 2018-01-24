@@ -1168,7 +1168,7 @@ section_slide "Oh, and one more thing...",
     picture
         translate 500, 400, 50
         rotate_z -5
-        image 0, 0, 80%, 80%, "Design.png"
+        image 0, 0, 80%, 80%, "steve-jobs.png"
 
 import "Quizz.ddd"
 

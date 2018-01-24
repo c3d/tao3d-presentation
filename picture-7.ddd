@@ -1,0 +1,4 @@
+color "white"
+picture_packer 1280, 768, 128, 128, 2, 2,
+    "/Users/ddd/Documents/Tao/Tao3DLab/pictures"
+rectangle mouse_x, mouse_y, 1280, 768

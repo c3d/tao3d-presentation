@@ -672,6 +672,7 @@ base_slide "Images, pictures and drawings",
         * "Images can be used as textures"
         * "Colorization"
         * "Texture dimensions"
+        * "And more bizarre things"
 
     right_picture
         example_box 1, "Image from file", "picture-1.ddd",
@@ -686,6 +687,8 @@ base_slide "Images, pictures and drawings",
             import "picture-5.ddd"
         example_box 6, "Texture dimensions", "picture-6.ddd",
             import "picture-6.ddd"
+        example_box 7, "Image packing", "picture-7.ddd",
+            import "picture-7.ddd"
 
 
 // ----------------------------------------------------------------------------

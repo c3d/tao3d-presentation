@@ -1,0 +1,12 @@
+HOLY_GRAIL -> "movies/Monty Python.mp4"
+movie 300, 0, 80%, 80%, HOLY_GRAIL
+on "pageexit", { movie_drop HOLY_GRAIL }
+
+movie_set_volume HOLY_GRAIL, mouse_y / 400
+sound_gauge movie_volume HOLY_GRAIL
+sound_gauge X:real ->
+  translate -300, -200, 50
+  color "green", 90%
+  ellipse_sector 0, 0, 300, 300, 0, 180
+  color "red", 90%
+  ellipse_sector 0, 0, 280, 280, 180, -180 * X

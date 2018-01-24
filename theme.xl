@@ -1024,7 +1024,7 @@ locally
 //
 // ============================================================================
 
-LANG -> "fr"
+LANG -> "en"
 English fr French -> if LANG="fr" then French else English
 english Body -> if LANG="en" then Body
 french  Body -> if LANG="fr" then Body

@@ -689,6 +689,145 @@ base_slide "Images, pictures and drawings",
 
 
 // ----------------------------------------------------------------------------
+base_slide "Movie playback",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Using the VLC library, Tao3D plays back any movie"
+    picture { image 660, 550, 30%, 30%, "film-reel.png" }
+
+    right_column
+        * "Use "; code "movie"; text " for playback"
+        * "Requires module: "; code "VLCAudioVideo"
+        * "It provides "; code "movie_texture"
+        * "... as well as "; code "movie_time"
+        * "... and "; code "movie_set_volume"
+        * "Pass VLC options after "; code "##"
+
+    left_picture
+        example_box 1, "Movie playback", "vlc-1.ddd",
+            translate 400, -100, 0
+            import "vlc-1.ddd"
+        example_box 2, "VLC Module", "vlc-2.ddd", false
+        example_box 3, "Movie texture", "vlc-3.ddd",
+            translate 400, -150, 0
+            scale 60%
+            import "vlc-3.ddd"
+            if smooth_step in 2.8..2.9 then
+                movie_set_time ASTEROIDS, 0.0
+        example_box 4, "Movie time", "vlc-4.ddd",
+            translate 400, -200, 0
+            scale 50%
+            import "vlc-4.ddd"
+        example_box 5, "Movie volume", "vlc-5.ddd",
+            translate 400, -200, 0
+            import "vlc-5.ddd"
+            if smooth_step >= 5.9 then
+                movie_drop HOLY_GRAIL
+        example_box 6, "VLC options", "vlc-6.ddd",
+            translate 0, -180, 0
+            import "vlc-6.ddd"
+
+
+
+// ----------------------------------------------------------------------------
+base_slide "Integrating movies in a narrative",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle
+        paragraph "Tao3D can perform actions based on movie time"
+        paragraph "(Based on a presentation of c3d/Build)"
+    picture { image 660, 550, 30%, 30%, "film-reel.png" }
+
+    ASK_ME_THE_QUESTION -> "movies/Monty Python.mp4##start-time=81"
+    picture
+        text_box -550, 0, 400, 800,
+            style "story"
+            paragraph "Autoconf looks a bit like this scene of Monty Python" fr "On se dirait un peu dans Monty Python"
+            skip_directly_to 5
+            current_step := 0
+            show fade_at(movie_time ASK_ME_THE_QUESTION, 98)
+            * "If you run Linux, it just works" fr "Sous Linux, tout va bien (en général)"
+            show fade_at(movie_time ASK_ME_THE_QUESTION, 108)
+            * "For others, it looks deceptively easy" fr "Pour les autres, ça a l'air facile"
+            show fade_at(movie_time ASK_ME_THE_QUESTION, 132)
+            * "But they need to answer really hard questions" fr "Mais ils ont à répondre à des questions difficiles"
+
+            show fade_at(movie_time ASK_ME_THE_QUESTION, 158)
+            * "Or are forced into unwanted decisions" fr "Ou sont forcés à faire certains choix"
+            show fade_at(movie_time ASK_ME_THE_QUESTION, 182)
+            * "While true bosses know more than autoconf ever will" fr "Quant aux vrais durs, ils savent mieux que le système"
+
+    picture
+        movie 200, 0, 170%, 170%, ASK_ME_THE_QUESTION
+        movie_set_volume ASK_ME_THE_QUESTION, 100%
+        on "pageexit",
+            movie_drop ASK_ME_THE_QUESTION
+
+        subtitle_text -> ""
+        subtitle Time, Text ->
+            if movie_time ASK_ME_THE_QUESTION >= Time then
+                subtitle_text := Text
+
+        subtitle 80, "Let me use configure, I'm not afraid" fr "J'ai même pas peur d'utiliser configure"
+        subtitle 84, "What is uname?" fr "Que dit uname?"
+        subtitle 86.5, "Linux 4.12.9-300.fc26.x86_64 #1 SMP x86_64 x86_64 x86_64 GNU/Linux"
+        subtitle 89, "What is your compiler?" fr "Quel est votre compilateur?"
+        subtitle 91, "gcc (GCC) 7.2.1 20170915 (Red Hat 7.2.1-2)"
+        subtitle 94, "Does your GCC accept the -fPIC option?" fr "Est-ce que votre GCC accepte l'option -fPIC?"
+        subtitle 96, "Yes" fr "Oui"
+        subtitle 97, "Perfect. Now type 'make'" fr "Parfait. Tapez 'make' maintenant"
+        subtitle 100, "Oh! Thank you. Thank you very much" fr "Ah, merci. Merci beaucoup"
+        subtitle 103, "(program is compiling)" fr "(le programme compile)"
+
+        subtitle 106.5, "That's easy!" fr "Mais c'est super facile!"
+        subtitle 111, "user@machine ~ > _"
+        subtitle 113, "This program uses autotools" fr "Ce programme utilise autotools"
+        subtitle 115, "Run ./configure to automatically select the correct options" fr "Utilisez ./configure pour sélectionner les bonnes options"
+        subtitle 117, "And then run 'make'" fr "Et ensuite vous pourrez utiliser 'make'"
+
+        subtitle 121, "Let me use configure, I'm not afraid" fr "J'ai même pas peur d'utiliser configure"
+        subtitle 123,  "What is uname?" fr "Que dit uname?"
+        subtitle 125, "Darwin Darwin Kernel Version 17.2.0:; root:xnu-4570.20.62~3/RELEASE_X86_64 x86_64"
+        subtitle 127, "What is your compiler?" fr "Quel est votre compilateur?"
+        subtitle 129, "Apple LLVM version 9.0.0 (clang-900.0.37)"
+        subtitle 131, "What is the option to force a read-only GOT?" fr "Quelle est l'option pour forcer la TOG à être en lecture seule?"
+        subtitle 134, "..."
+        subtitle 136, "I don't know that!" fr "Mais j'en sais rien!"
+        subtitle 137, "configure: error: package 'autotools' failed"
+
+        subtitle 146, "[user@machine]% █"
+        subtitle 148, "What is uname?" fr "Que dit uname?"
+        subtitle 150, "Linux 3.13.0-24-generic #46-Ubuntu SMP GNU/Linux"
+        subtitle 152, "What is your compiler?" fr "Quel est votre compilateur?"
+        subtitle 154.2, "gcc (Ubuntu 4.8.2-19ubuntu1) 4.8.2"
+        subtitle 156, "Does your GCC accept the -fPIC option?" fr "Est-ce que votre GCC accepte l'option -fPIC?"
+        subtitle 159, "Yes. Ah, wait, I'm doing a static lib" fr "Oui. Ah, en fait je fais une librairies statique"
+        subtitle 161, "configure: error: don't know how to get rid of -fPIC"
+        subtitle 167, "Use of uninitialized value $msg in concatenation (.) or string at /usr/local/Cellar/autoconf/2.69/bin/autom4te line 1026."
+
+        subtitle 168.5, "king@world[master] spice> ▄"
+        subtitle 170, "What is uname?" fr "Que dit uname?"
+        subtitle 172, "Darwin Darwin Kernel Version 17.2.0:; root:xnu-4570.20.62~3/RELEASE_X86_64 x86_64"
+        subtitle 174, "What is your compiler?" fr "Quel est votre compilateur?"
+        subtitle 176.2, "Apple LLVM version 9.0.0 (clang-900.0.37)"
+        subtitle 179, "Does your program require the -ObjC option to compile sources?" fr "Est-ce que votre programme a besoin de l'option -ObjC pour compiler?"
+        subtitle 183, "What do you mean, do the source include <AppKit.h> or <Foundation.h>?" fr "Ça dépend, est ce que les sources utilisent <AppKit.h> ou <Foundation.h>?"
+        subtitle 186, "configure: error: can't add per-source option depending on headers"
+        subtitle 188.3, "(uninstalling autoconf and automake)"
+        subtitle 194.8, "How do you know so much about -ObjC?" fr "Comment savez vous toutes ces choses à propos de -ObjC?"
+        subtitle 197, "Well, you have to know these things when you are a real real programmer, you know" fr "Il faut apprendre ce genre de choses quand on est un développeur, tu sais"
+
+        on "key:Return", { movie_set_time ASK_ME_THE_QUESTION, 195 }
+
+        box 200, -350, 1100, 100,
+            font "Impact", 30
+            color "yellow"
+            align 50%
+            vertical_align 50%
+            paragraph subtitle_text
+
+
+// ----------------------------------------------------------------------------
 base_slide "Dynamic textures",
 // ----------------------------------------------------------------------------
     title page_label
@@ -740,7 +879,7 @@ section_slide "Text boxes and layouts",
 base_slide "Text boxes and text layout",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Real-time text layout covering the majority of situations"
+    subtitle "Real-time text layout with fine-grained control"
     illustration 35%, "Text Layout.png"
 
     left_column
@@ -795,7 +934,6 @@ demo_slide "Live Coding #6: Slide layouts", 40%, "pinky-decor.png"
 // ----------------------------------------------------------------------------
 
 
-// Text layout
 // Movies
 // Slides
 // Themes (using)

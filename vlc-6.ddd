@@ -1,0 +1,7 @@
+HOLY_GRAIL -> "movies/Monty Python.mp4"
+OPT1 -> "##start-time=99"
+OPT2 -> "##stop-time=111"
+OPT3 -> "##input-repeat=-1"
+MOVIE_OPTS -> HOLY_GRAIL & OPT1 & OPT2 & OPT3
+movie 0, 0, 90%, 90%, MOVIE_OPTS
+on "pageexit", { movie_drop MOVIE_OPTS }

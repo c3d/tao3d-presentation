@@ -1,0 +1,4 @@
+ASTEROIDS -> "movies/One Billion Points.mkv"
+movie_texture ASTEROIDS
+on "pageexit", { movie_drop ASTEROIDS }
+rounded_rectangle 0, 0, 1280, 720, 90

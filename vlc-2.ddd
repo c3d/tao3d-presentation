@@ -1,0 +1,3 @@
+import VLCAudioVideo
+movie 0, 0, 75%, 75%, ASTEROIDS
+on "pageexit", { movie_drop ASTEROIDS }

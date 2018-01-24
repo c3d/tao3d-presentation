@@ -1,0 +1,5 @@
+Tao3D supports right-to-left languages like Arabic and Hebrew.
+
+يدعم Tao3D لغات من اليمين إلى اليسار مثل العربية والعبرية
+
+Tao3D תומך בשפות מימין לשמאל כמו ערבית ועברית

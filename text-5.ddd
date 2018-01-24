@@ -1,0 +1,6 @@
+text_box 0, 0, 600, 300,
+    paragraph_space 3, 0
+    align          0%, 50%+mouse_x/600
+    vertical_align 0%, 0%, 30%, 50%-mouse_y/300
+    paragraph_space 10, 0
+    text load_text "justified-text.txt"

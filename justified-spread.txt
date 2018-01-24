@@ -1,0 +1,2 @@
+Spread controls how justification amount is split between inter-word spacing and inter-character spacing.
+Full justification is the amount of justification applied to non-full lines.

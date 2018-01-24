@@ -1,0 +1,29 @@
+import WhiteChristmasTheme
+
+theme "WhiteChristmas"
+
+title_slide "Title slide",
+    subtitle "Subtitle here"
+
+slide "Simple slide",
+    * "First bullet"
+    ** "Second level"
+    * "Second bullet"
+    ** "Second level"
+
+picture_slide "Picture slide",
+    subtitle "Transparency!"
+    texture "http://cc3d.free.fr/Car.jpg"
+    scale 70%
+    rounded_rectangle 0, 0, texture_width, texture_height, 40
+
+base_slide "Two columns",
+    title "Two columns"
+    subtitle "Complex layout"
+
+    left_column
+        * "Bullet in left column"
+    right_picture
+        texture "Valbonne.jpg"
+        scale 50%
+        rounded_rectangle 0, 0, texture_width, texture_height, 40

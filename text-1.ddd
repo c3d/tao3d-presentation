@@ -1,0 +1,4 @@
+text_box 0, 0, 600, 300,
+    text "Hello "
+    text "World! "
+    text "Tao3D is really easy to use..."

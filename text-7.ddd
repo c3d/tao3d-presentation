@@ -1,0 +1,5 @@
+font "Arial", 35
+text_box 0, 0, 600, 300,
+    align          50% + mouse_x/600
+    vertical_align 50% - mouse_y/300
+    text load_text "justified-rtl.txt"

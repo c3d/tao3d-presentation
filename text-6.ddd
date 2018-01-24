@@ -1,0 +1,6 @@
+spread_example 50% + mouse_x/600, 50% - mouse_y/300
+spread_example Spread:real, Full:real ->
+    text_box 0, 0, 600, 300,
+        align 0%, 100%, Full, Spread
+        paragraph_space 10, 0
+        text load_text "justified-spread.txt"

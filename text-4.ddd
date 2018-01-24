@@ -1,0 +1,7 @@
+text_box 0, 0, 600, 300,
+    align          50% + mouse_x/600
+    vertical_align 50% - mouse_y/300
+    text "Tao3D makes it easy to align "
+    text "text in any way, "
+    text "not just top/left "
+    text "or bottom/right"

@@ -20,4 +20,4 @@ if false then X else Y -> Y
 loop Body              -> Body; loop Body
 
 // Definition of time-based control
-[A..B] X               -> if time in A..B then X
+[A..B] X    -> if time in A..B then X

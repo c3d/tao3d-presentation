@@ -1,0 +1,8 @@
+text_box 0, 0, 600, 300,
+    text "Hello "
+    font "Huh?", "Luminari", 40, italic
+    color "blue"
+    text "World!"
+    color "red"
+    roman
+    paragraph "Tao3D is really easy to use..."

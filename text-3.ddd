@@ -1,0 +1,7 @@
+for H in 0..2 loop
+    for V in 0..2 loop
+        text_box 0, 0, 600, 300,
+            align H * 50%
+            vertical_align V * 50%
+            paragraph "H=" & H * 50 & "%"
+            paragraph "V=" & V * 50 & "%"

@@ -1,0 +1,4 @@
+chain X, Y      -> chain X; chain Y
+chain "circle"  -> ellipse 0, 0, 100, 50
+chain R:real    -> circle 0, 0, R
+chain X         -> render X

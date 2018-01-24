@@ -1,0 +1,9 @@
+draw_shape with "rect", "oval", "glop", "triangle", "GIMP", "rect", "oval"
+
+forward                 -> translate_x 100; rotate_z 5 * sin time
+
+draw_shape "GIMP"       -> texture "GIMP Icon.png"; color "white"
+draw_shape "rect"       -> rectangle 0, 0, 80, 50       ; forward
+draw_shape "oval"       -> ellipse   0, 0, 80, 50       ; forward
+draw_shape "triangle"   -> triangle  0, 0, 80, 50       ; forward
+draw_shape X            -> font_size 80; text X & "?"   ; forward

@@ -1,0 +1,5 @@
+Tao3D has a real-time text layout engine for text boxes. That layout engine is designed to be fast enough to layout relatively large amounts of text in real-time (or at least fast enough for interactivity).
+
+Despite being real-time, this layout engine is quite powerful, being able to do both horizontal and vertical layout, centering, justification, last-line justification, or spread between word and character spacing.
+
+You can use the various justification controls to get exactly the layout you need for optimal rendering of the information you want to share.

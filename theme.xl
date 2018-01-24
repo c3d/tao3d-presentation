@@ -76,6 +76,10 @@ theme_font  "RedHat", Master, "comp"            -> font "Overpass", regular
 theme_size  "RedHat", Master, "comp"            -> 32
 theme_color "RedHat", Master, "comp"            -> color "black"
 theme_align "RedHat", Master, "comp"            -> align 0%
+theme_font  "RedHat", Master, "demo"            -> font "Luminari"
+theme_size  "RedHat", Master, "demo"            -> 70
+theme_color "RedHat", Master, "demo"            -> color "#242"
+theme_align "RedHat", Master, "demo"            -> align 50%; vertical_align 35%
 
 theme_align "RedHat", Master,"story",N          -> margins 40*N, 0
 theme_color "RedHat", Master,"story",N          -> color "black", 0.99-0.2*N
@@ -203,8 +207,8 @@ theme_background "RedHat", Master ->
             for I in 0..8 loop
                 rectangle 10 * I, 10 * I
         texture_transform
-            translate -time * 0.2 mod 1, 0.0, 0
-            scale 20 + 10 * sin (0.1 * time)
+            translate -time * 0.004 mod 1, 0.0, 0
+            scale 20 + 10 * sin (0.003 * time)
         texture_wrap true, true
         color "lightgray", 60% // 30
         locally
@@ -485,10 +489,7 @@ demo_slide Title, Size, Image, Body ->
             image 550, 400, Size, Size, Image
         picture
             box 0, 0, 1400, 800,
-                style "Title"
-                font_size 80
-                align 50%
-                vertical_align 30%
+                style "demo"
                 text Title
         Body
 demo_slide Title, Size, Image -> demo_slide Title, Size, Image, false

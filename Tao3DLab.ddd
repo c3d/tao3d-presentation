@@ -98,6 +98,7 @@ base_slide "Installing Tao3D the easy way",
     subtitle
         paragraph "Download from the web site and run the installer"
         paragraph { code "https://tao3d.sourceforge.net" }
+    illustration 30%, "Tao3DInstall.png"
     picture
         frame_texture 1500, 800,
             translate_y (650 * smooth_step - 1350) * fade_at(smooth_step, 1)
@@ -114,6 +115,7 @@ base_slide "Building Tao3D from git",
     subtitle
         paragraph "Hard dependencies on Qt5 and LLVM"
         paragraph { code "https://github.com/c3d/tao-3D" }
+    illustration 40%, "git icon.png"
     picture
         at_step 1
         code_box -400, 100, 700, 500, "Dependencies",
@@ -128,6 +130,7 @@ base_slide "The most useful feature of Tao3D",
 // ----------------------------------------------------------------------------
     title page_label
     subtitle "The one menu entry you should use right after installation"
+    illustration 30%, "Tao3D Help Icon.png"
     picture
         only_at 1,
             image 0, 0, 80%, 80%, "Tao3D Help Menu.png"
@@ -209,10 +212,11 @@ base_slide "Representing the parse tree",
 
 
 // ----------------------------------------------------------------------------
-base_slide "A few noticeable aspects",
+base_slide "A few things to know",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Some peculiar aspects of how Tao3D parses source code"
+    subtitle "Some peculiar aspects of how Tao3D reads source code"
+    illustration 15%, "Puzzling.png"
     story
         § "Terminal nodes:"
         * "Number separators: "; code "1_000_000"
@@ -230,6 +234,10 @@ base_slide "A few noticeable aspects",
         § "Some special rules"
         * "Expression vs. statement: "; code "write sin X, Y"
         * "Spacing around operators: "; code "write -A * (B-C)"
+        * "Pattern matching is the basis for overloading"
+    picture
+        code_box_at_step 13, 470, -120, 600, 200, "Patterm matching",
+            colorize load_text "patterns.ddd"
 
 
 // ----------------------------------------------------------------------------
@@ -278,12 +286,23 @@ base_slide "Dynamic compilation and updates",
         §
         § "We will use this for our live coding sessions"
     picture
+        color "white", fade_between(smooth_step, 1, 6)
+        image 600, 300, 100%, 100%, "LLVM Logo.png"
         at_step 7
         anchor
             color "white"
             image 300,  100, 50%, 50%, "Emacs Icon.png"
             image 300, -150, 20%, 20%, "DxO Optics Pro.png"
             image 500,  -50, 80%, 80%, "GIMP Icon.png"
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #2: Pattern Matching", 40%, "Pattern Match.png",
+// ----------------------------------------------------------------------------
+    translate -200, -200, 0
+    scale 70%
+    color "navy", 60%
+    import "demos/pattern-matching.ddd"
 
 
 
@@ -297,7 +316,6 @@ section_slide "Drawing stuff",
     picture
         translate 500, 400, 50
         rotate_z -5
-        locally
         image 0, 0, 50%, 50%, "3D Shark.jpg"
 
 
@@ -308,7 +326,7 @@ base_slide "Drawing coordinates",
     subtitle "Tao3D uses a screen-centered 3D coordinates system"
     illustration 25%, "Coordinates.png"
     picture
-        translate 200 * fade_between(smooth_step, 3, 4), 60, 0
+        translate 150 * fade_between(smooth_step, 3, 4), 60, 0
         rotate_z 20 * fade_between(smooth_step, 4, 4)
         rotate_x 20 * fade_between(smooth_step, 5, 9)
         rotate_y (40 + 20 * sin time) * fade_between(smooth_step, 5, 9)
@@ -380,19 +398,19 @@ base_slide "Drawing coordinates",
                 paragraph "Translation and rotation change the coordinate system"
             text_box 450, -100, 400, 300,
                 style "code"
-                paragraph "translate 200, 0, 0"
+                paragraph "translate 150, 0, 0"
                 at_step 4
                 paragraph "rotate_z 20"
         only_at 5,
-            text_box -300, 200, 400, 300,
+            text_box -300, 200, 500, 300,
                 style "comment"
-                paragraph "The coordinate system is in 3D with Z ""poking out"" of the screen"
+                paragraph "The coordinate system is actually always in 3D with Z ""poking out"" of the screen"
             text_box 250, -100, 400, 300,
                 style "code"
                 paragraph "rotate_x 20"
                 paragraph "rotate_y 40 + 20 * sin time"
         only_at 6,
-            text_box -300, 200, 400, 300,
+            text_box -300, 200, 500, 300,
                 style "comment"
                 paragraph "3D transforms are possible even for 2D shapes"
             text_box 250, -100, 400, 300,
@@ -590,13 +608,12 @@ base_slide "Using locally and shape",
 
 
 // ----------------------------------------------------------------------------
-demo_slide "Live Coding #2: Building a clock", 25%, "Clock.png",
+demo_slide "Live Coding #3: Building a clock", 25%, "Clock.png",
 // ----------------------------------------------------------------------------
     picture
-        import "demos/clock.ddd"
         translate_y -200
         scale 80%
-        clock
+        import "demos/clock.ddd"
 
 
 // ----------------------------------------------------------------------------
@@ -623,7 +640,7 @@ base_slide "3D objects",
 
 
 // ----------------------------------------------------------------------------
-demo_slide "Live Coding #3: 3D objects and lighting", 60%, "3D Shapes.png"
+demo_slide "Live Coding #4: 3D objects and lighting", 60%, "3D Shapes.png"
 // ----------------------------------------------------------------------------
 
 
@@ -638,7 +655,6 @@ section_slide "Images, movies and textures",
     picture
         translate 500, 400, 50
         rotate_z -5
-        locally
         image 0, 0, 50%, 50%, "3D-TV.png"
 
 
@@ -694,7 +710,91 @@ base_slide "Dynamic textures",
             import "dynamic-3.ddd"
 
 
-// Paths
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #5: Dynamic textures", 30%, "Dynamic Texture.png"
+// ----------------------------------------------------------------------------
+
+
+
+// ============================================================================
+//
+section_slide "Text boxes and layouts",
+//
+// ============================================================================
+    title page_label
+    subtitle "Texts are a central element of way too many presentations"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        locally
+            radial_gradient 64, 64, 64, 128, 128,
+                gradient_color   0%, "white", 80%
+                gradient_color  80%, "white", 60%
+                gradient_color 100%, "white",  0%
+            ellipse 0, 0, 500, 400
+        image 0, 0, 80%, 80%, "Text Layout.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Text boxes and text layout",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Real-time text layout covering the majority of situations"
+    illustration 35%, "Text Layout.png"
+
+    left_column
+        * "Text layout happens in "; code "text_box"
+        * "Fonts, attributes, paragraphs"
+        * "Horizontal and vertical alignment"
+        * "Alignments are proportional"
+        * "Justification is also proportional"
+        * "Spread and last-line justification"
+        * "Right-to-left support"
+        §
+        § "Sill quite a few bugs..."
+
+    right_picture
+        color "black", 10% * fade_between(smooth_step, 1, 7)
+        line_color "lightgray", 90% * fade_between(smooth_step, 1, 7)
+        rectangle 0, -200, 600, 300
+
+        font "Arial", 45
+        color "#400"
+        line_color "transparent"
+
+        example_box 1, "Text box", "text-1.ddd",
+            translate_y -200
+            import "text-1.ddd"
+        example_box 2, "Fonts and attributes", "text-2.ddd",
+            translate_y -200
+            import "text-2.ddd"
+        example_box 3, "Horizontal and vertical", "text-3.ddd",
+            translate_y -200
+            font "Arial", bold, 25
+            import "text-3.ddd"
+        example_box 4, "Proportional alignment", "text-4.ddd",
+            translate_y -200
+            import "text-4.ddd"
+        example_box 5, "Justification", "text-5.ddd",
+            translate_y -200
+            font "Arial", 18
+            import "text-5.ddd"
+        example_box 6, "Spread", "text-6.ddd",
+            translate_y -200
+            font "Arial", 35
+            import "text-6.ddd"
+        example_box 7, "Right-to-left text layout", "text-7.ddd",
+            translate_y -200
+            font "Arial Unicode MS", 35
+            import "text-7.ddd"
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #6: Slide layouts", 40%, "pinky-decor.png"
+// ----------------------------------------------------------------------------
+
+
 // Text layout
 // Movies
 // Slides

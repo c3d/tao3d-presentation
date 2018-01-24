@@ -1,0 +1,2 @@
+color "darkgreen"
+circle 200 * fade_out_at(mouse_x/200, 0), 0, 40

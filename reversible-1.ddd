@@ -1,0 +1,4 @@
+on "key:j", { skip -1 }
+on "key:k", { skip  1 }
+color "darkred"
+circle 100 * smooth_step - 200, 0, 40

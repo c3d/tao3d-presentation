@@ -1050,6 +1050,48 @@ base_slide "Optimized refresh and redraw",
             import "reactive-7.ddd"
 
 
+// ----------------------------------------------------------------------------
+base_slide "Reversible animations",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Animations should be able to play back and forth"
+    illustration 100%, "Back and Forth.png"
+
+    left_column
+        * "Use module "; code "Animate"
+        * "Stepping position is "; code "step"
+        * "Smoothed as "; code "smooth_step"
+        * "Skipping steps with "; code "skip"
+        * "Transitions with "; code "fade_at"
+        * "Variants like "; code "fade_out_at"
+        * "and "; code "fade_between"
+
+
+    right_picture
+        example_box 2..4, "Stepping", "reversible-1.ddd",
+            translate 0, -200, 0
+            import "reversible-1.ddd"
+            text_box 0, -200, 600, 400,
+                style "code"
+                font_size 30
+                paragraph "step=" & step
+                show fade_at(smooth_step, 3)
+                paragraph "smooth_step=" & smooth_step
+                refresh 0
+
+        example_box 5, "Fading", "reversible-2.ddd",
+            translate_y -200
+            import "reversible-2.ddd"
+
+        example_box 6, "Fading out", "reversible-3.ddd",
+            translate_y -200
+            import "reversible-3.ddd"
+
+        example_box 7, "Fading between", "reversible-4.ddd",
+            translate_y -200
+            import "reversible-4.ddd"
+
+
 
 // ============================================================================
 //

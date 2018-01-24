@@ -1,0 +1,5 @@
+color_hsv 60 * mouse_buttons, 100%, 100%
+rectangle mouse_x, mouse_y, 200, 100
+
+color "gray"
+circle 0, 0, 30

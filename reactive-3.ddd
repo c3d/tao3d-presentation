@@ -1,0 +1,12 @@
+color "red"
+rectangle -200, 100 * sin time, 250, 100
+text_box -200, 100 * sin time, 250, 100,
+    color "white"
+    paragraph "T=" & time
+    paragraph "D=" & (time mod 86400)
+
+color "blue"
+rectangle 200, 100 * sin page_time, 250, 100
+text_box  200, 100 * sin page_time, 250, 100,
+    color "white"
+    paragraph "P=" & page_time

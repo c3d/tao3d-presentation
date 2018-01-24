@@ -1,0 +1,7 @@
+locally
+    for I in 1..6 loop
+        locally
+            color_hsv I * 20, 70%, 100%, 50%
+            rotate_z 20 * I * time
+            ellipse 100, 0, 120, 40
+    time

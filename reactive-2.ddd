@@ -1,0 +1,12 @@
+rect_x -> 0.0
+rect_y -> 0.0
+on "key:j", { rect_x := rect_x - 10 }
+on "key:k", { rect_x := rect_x + 10 }
+on "key:i", { rect_y := rect_y + 10 }
+on "key:m", { rect_y := rect_y - 10 }
+
+if shift_modifier then
+    color "purple"
+else
+    color "darkgreen"
+rectangle rect_x, rect_y, 200, 100

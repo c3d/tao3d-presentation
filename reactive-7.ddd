@@ -1,0 +1,11 @@
+variable_capture Z:integer ->
+    locally
+        color_hsv Z * 20, 70%, 100%, 50%
+        rotate_z 20 * Z * time
+        ellipse 100, 0, 120, 40
+
+for I in 1..6 loop
+    if mouse_x > 0 then
+        variable_capture I + 0
+    else
+        variable_capture I

@@ -953,7 +953,7 @@ base_slide "Auto-scaling",
         ** "Significant content (fit)"
         * "What about aspect resizing?"
         ** "Using "; code "background"; text " and "; code "contents"
-        ** "Those also deal with depth (compensate for perspective)"
+        ** "These functions also deal with depth (compensate for perspective)"
     right_picture
         example_box 6..7, "Background and contents", "autoscale.ddd", false
 
@@ -961,6 +961,91 @@ base_slide "Auto-scaling",
 // ----------------------------------------------------------------------------
 demo_slide "Live Coding #6: Slide layouts", 40%, "pinky-decor.png"
 // ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+base_slide "Reactive programming",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Responding to events by re-evaluating code"
+    illustration 30%, "Events.png"
+
+    left_column
+        * "Mouse events"
+        ** "Compensates for perspective"
+        * "Keyboard events"
+        * "Time and page time"
+        §
+        § "But... How does it work?"
+    right_picture
+        example_box 1..2, "Mouse control", "reactive-1.ddd",
+            translate 200 * fade_at(smooth_step, 2), -200, 0
+            rotate_x 20 * fade_at(smooth_step, 2)
+            rotate_y 45 * fade_at(smooth_step, 2)
+            import "reactive-1.ddd"
+        example_box 3, "Keyboard control", "reactive-2.ddd",
+            translate 0, -200, 0
+            import "reactive-2.ddd"
+        example_box 4, "Time-dependent code", "reactive-3.ddd",
+            translate 0, -200, 0
+            font "Arial", 30
+            align_center; vertical_align_center
+            import "reactive-3.ddd"
+
+
+
+// ----------------------------------------------------------------------------
+base_slide "Optimized refresh and redraw",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D re-evaluate parts of the document independantly"
+    illustration 60%, "upcoming-events.png"
+
+    left_column
+        * "Events trigger a refresh"
+        * "Refresh is limited by "; code "locally"
+        §
+        § "But..."
+        * "Beware of saved variables"
+        * "Only one "; code "I"; text ", has value "; code "6"; text " in refresh"
+        * "Fix #1: refresh one level up"
+        * "(This is a bit inefficient)"
+        * "Fix #2: Capture a copy of the value"
+
+    right_picture
+        example_box 1..2, "Refresh", "reactive-4.ddd",
+            translate_y -200
+
+            import "reactive-4.ddd"
+
+            text_box -800, 0, 600, 400,
+                style "code"
+                paragraph "key_hits=" & key_hits
+                paragraph "mouse_hits=" & mouse_hits
+                paragraph "time_hits=" & time_hits
+                paragraph "seconds_hits=" & seconds_hits
+                paragraph "global_hits=" & global_hits
+                refresh 0
+
+            if smooth_step in 0.8..0.9 then
+                key_hits := 0
+                mouse_hits := 0
+                time_hits := 0
+                seconds_hits := 0
+                global_hits := 0
+
+        example_box 4..5, "Saved variable", "reactive-5.ddd",
+            translate_y -200
+            import "reactive-5.ddd"
+
+        example_box 6..7, "Force redraw", "reactive-6.ddd",
+            translate_y -200
+            import "reactive-6.ddd"
+
+        example_box 8, "Variable capture", "reactive-7.ddd",
+            translate_y -200
+            import "reactive-7.ddd"
+
 
 
 // ============================================================================

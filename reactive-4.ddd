@@ -1,0 +1,23 @@
+key_hits -> 0
+mouse_hits -> 0
+time_hits -> 0
+seconds_hits -> 0
+global_hits -> 0
+
+locally
+    on "key:[a-z]",
+        key_hits := key_hits + 1
+
+locally
+    mouse_x
+    mouse_hits := mouse_hits + 1
+
+locally
+    time
+    time_hits := time_hits + 1
+
+locally
+    seconds
+    seconds_hits := seconds_hits + 1
+
+global_hits := global_hits + 1

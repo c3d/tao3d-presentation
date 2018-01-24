@@ -29,6 +29,7 @@ quizz "Did you enjoy this talk?",
     answer "You bet, it was great!", 1
     answer "No, I am still sleeping"
     answer "What talk?"
+    answer "I'm here for the food, dude!"
     quizz_picture "http://icons.iconarchive.com/icons/codicode/smiley/256/happy-icon.png", 150%
 
 

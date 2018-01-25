@@ -1172,7 +1172,7 @@ section_slide "Data processing",
 base_slide "Text manipulations",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Standard operations to manipulate text"
+    subtitle "Fairly standard operations on text"
     illustration 60%, "Graphics Design.png"
 
     left_column
@@ -1202,16 +1202,51 @@ base_slide "Text manipulations",
 base_slide "Simple lists",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
+    subtitle "Representing data as lists using pattern matching"
     illustration 60%, "Graphics Design.png"
 
     left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
+        * "A list? No, an infix"; code ","
+        * "Operating on lists"
+        * "... with the power of code"
+        * "Map operation: "; code "with"
+        * "... which can contain ranges"
+        * "Filter operation: "; code "where"
+        * "Reduce operation"
+        * "(Really badly broken - No live coding on that one)"
 
     right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
+        demo_adjust ->
+            translate -1000, -350, 0
+            font "Arial", 30
+            align 50%
+            vertical_align 50%
+        example_box 1, "Infix operator", "list-1.ddd", false
+        example_box 2, "List expansion", "list-2.ddd",
+            demo_adjust
+            color "darkred"
+            import "list-2.ddd"
+        example_box 3, "Code in list", "list-2b.ddd",
+            demo_adjust
+            color "darkred"
+            import "list-2b.ddd"
+        example_box 4, "Map", "list-3.ddd",
+            demo_adjust
+            color "darkgreen"
+            import "list-3.ddd"
+        example_box 5, "Ranges in map", "list-3b.ddd",
+            demo_adjust
+            color "darkgreen"
+            import "list-3b.ddd"
+        example_box 6, "Filter", "list-4.ddd",
+            demo_adjust
+            color "darkblue"
+            import "list-4.ddd"
+        example_box 7..8, "Reduce", "list-5.ddd",
+            demo_adjust
+            color "darkred"
+            font "Arial", 50
+            import "list-5.ddd"
 
 
 // ----------------------------------------------------------------------------

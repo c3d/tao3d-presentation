@@ -1,0 +1,16 @@
+L -> 1, 2, 3, 16, 5, 1..20
+
+list_chart 12 ->
+    locally
+        color "darkorange"
+        rounded_rectangle 60, 0, 120, 10, 10
+    translate_y 12
+
+list_chart X:integer ->
+    rectangle 5 * X, 0, 10 * X, 10
+    translate_y 12
+
+color "darkblue"
+list_chart with X where X mod 2 = 0 with L
+color "darkred"
+list_chart with X where X mod 2 = 1 with L

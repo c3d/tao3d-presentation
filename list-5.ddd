@@ -1,0 +1,8 @@
+0! -> 1
+N! -> N * (N-1)!
+
+sum_of_factorials ->
+    (x,y->x+y) with (x where x < 100) with (x->x!) with 1..10
+
+text "The sum of factorials less than 100 "
+text "is " & sum_of_factorials

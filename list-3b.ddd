@@ -1,0 +1,6 @@
+list_chart X:real ->
+    rectangle 5 * X, 0, 10 * X, 10
+    translate_y 12
+
+list_chart with 12..20, 2, 37..0 by -5, 2
+list_chart with 1.9..2.3 by 0.13, 17, 1..0, 8

@@ -1,0 +1,16 @@
+my_list -> 3, "List", 3.2, 6.0, 21.9, 4.3, 11.1
+
+list_chart X:integer ->
+    color_hsv 37 * X, 70%, 80%
+
+list_chart X:real ->
+    rectangle 5 * X, 0, 10 * X, 30
+    translate_y 35
+
+list_chart X ->
+    text_box -50, 0, 100, 30,
+        render X
+
+list_chart with 0, "Hello", 12.5, 14.5, 2.3
+list_chart with 1, "World", 11.2, time mod 20.5
+list_chart with my_list

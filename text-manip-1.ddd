@@ -1,0 +1,2 @@
+text_box 0, 0, 600, 200,
+    paragraph "Hello " & "World " & seconds

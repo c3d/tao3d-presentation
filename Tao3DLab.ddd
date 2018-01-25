@@ -1014,6 +1014,9 @@ base_slide "Optimized refresh and redraw",
         * "Fix #1: refresh one level up"
         * "(This is a bit inefficient)"
         * "Fix #2: Capture a copy of the value"
+        §
+        § "All this matters for power and performance..."
+
 
     right_picture
         example_box 1..2, "Refresh", "reactive-4.ddd",
@@ -1152,9 +1155,205 @@ base_slide "The theme.xl file",
             colorize load_text "theme-example.xl"
 
 
-// RegExp
-// Shaders
-// NodeJS
+// ============================================================================
+//
+section_slide "Data processing",
+//
+// ============================================================================
+    title page_label
+    subtitle "Good presentations often depend on good data"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        image 0, 0, 60%, 60%, "big-data-analytics.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Text manipulations",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Standard operations to manipulate text"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Text concatenation with "; code "&"
+        * "Text ranges with "; code "text_range"
+        * "Read text files with "; code "load_text"
+
+    right_picture
+        example_box 1, "Text concatenation", "text-manip-1.ddd",
+            font "Arial", 40
+            translate_y -200
+            color "darkred"
+            import "text-manip-1.ddd"
+        example_box 2, "Text ranges", "text-manip-2.ddd",
+            font "Menlo", 40
+            translate_y -200
+            color "darkgreen"
+            import "text-manip-2.ddd"
+        example_box 3, "Loading text from file", "text-manip-3.ddd",
+            font "Arial", 20
+            translate_y -200
+            color "darkblue"
+            import "text-manip-3.ddd"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Simple lists",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+base_slide "Loading data from external files",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #9: Hipparcos Star Map", 100%, "Graphics Design.png"
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+base_slide "Regular expressions",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #10: Source code colorization", 100%, "Graphics Design.png"
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+base_slide "Extending Tao3D with C++ modules",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+
+// ============================================================================
+//
+section_slide "Shaders",
+//
+// ============================================================================
+    title page_label
+    subtitle "Yet another programming language to deal with"
+    picture
+        translate 500, 400, 50
+        rotate_z -5
+        image 0, 0, 80%, 80%, "big-data-analytics.png"
+
+
+// ----------------------------------------------------------------------------
+base_slide "Using shaders",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+base_slide "Image processing and filters",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+base_slide "Real-time ray-tracing",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+base_slide "Real-time ray-marching",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "Tao3D comes up with a few semi-useless themes"
+    illustration 60%, "Graphics Design.png"
+
+    left_column
+        * "Themes are exposed as modules"
+        * "Load several simultaneously"
+        * "Select a theme using "; code "theme"
+
+    right_picture
+        example_box 1..3, "Themes", "theme-1.ddd", false
+
+
+// ----------------------------------------------------------------------------
+demo_slide "Live Coding #11: Shader editing", 100%, "Graphics Design.png"
+// ----------------------------------------------------------------------------
+
 
 
 

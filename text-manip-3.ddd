@@ -1,0 +1,12 @@
+cmd_prompt_text T:text, S:integer ->
+    text_range(T, 0,
+        integer(S*time) mod (2*S+text_length T))
+
+cmd_prompt T:text, S:integer, B:integer ->
+    text_box 0, 0, 700, 200,
+        paragraph
+            text cmd_prompt_text(T, S)
+            show integer(B * time) mod 2
+            text "_"
+
+cmd_prompt load_text "justified-text.txt",50,3

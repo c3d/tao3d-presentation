@@ -1,0 +1,22 @@
+color_it T:text ->
+ regexp_parse_all T,
+    "[A-Z]+" ->
+      color "darkblue"
+      text regexp_captured 0
+    "[a-z]+" ->
+      color "blue"
+      text regexp_captured 0
+    "[0-9]+" ->
+      color "darkgreen"
+      text regexp_captured 0
+    "." ->
+      color "darkred"
+      text regexp_captured 0
+
+color_it N:integer, T:text ->
+  color_it text_range(T,N mod text_length T,50)
+
+color_it N:integer ->
+  color_it N, "Hello World 42!!!"
+
+color_it integer(3 * page_time)

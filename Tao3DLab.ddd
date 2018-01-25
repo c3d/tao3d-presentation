@@ -1285,16 +1285,30 @@ demo_slide "Live Coding #9: Hipparcos Star Map", 100%, "icon-big-data.png"
 base_slide "Regular expressions",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
-    illustration 60%, "Graphics Design.png"
+    subtitle "How do you think the colorization works?"
+    illustration 60%, "RegExRX.png"
 
     left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
+        * "Check matches with "; code "regexp_match"
+        * "Parse text with "; code "regexp_parse"
         * "Select a theme using "; code "theme"
+        §
+        § "Any idea how colorization works now?"
+
 
     right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
+        example_box 1, "Regexp match", "regexp-1.ddd",
+            translate -200, -150, 0
+            font "Arial", 60
+            import "regexp-1.ddd"
+        example_box 2, "Regexp parse", "regexp-2.ddd",
+            translate -600, -150, 0
+            font "Arial", 60
+            import "regexp-2.ddd"
+        example_box 3, "Regexp parse all", "regexp-3.ddd",
+            translate -800, -150, 0
+            font "Arial", 60
+            import "regexp-3.ddd"
 
 
 // ----------------------------------------------------------------------------

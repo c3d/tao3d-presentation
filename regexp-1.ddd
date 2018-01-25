@@ -1,0 +1,6 @@
+if regexp_match("" & seconds, "[05]") then
+    color "blue"
+else
+    color "red"
+
+text "Seconds=" & seconds

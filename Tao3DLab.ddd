@@ -1312,7 +1312,7 @@ base_slide "Regular expressions",
 
 
 // ----------------------------------------------------------------------------
-demo_slide "Live Coding #10: Source code colorization", 100%, "Graphics Design.png"
+demo_slide "Live Coding #10: Source code colorization", 120%, "Graphics Design Crayon.png"
 // ----------------------------------------------------------------------------
 
 
@@ -1320,16 +1320,18 @@ demo_slide "Live Coding #10: Source code colorization", 100%, "Graphics Design.p
 base_slide "Extending Tao3D with C++ modules",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
-    illustration 60%, "Graphics Design.png"
+    subtitle "Tao3D can also be extended with C++ modules"
+    illustration 40%, "C++.png"
 
-    left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
+    story
+        § "Examples of modules written in C++"
+        * "Videos: "; code "VLCAudioVideo"
+        * "Regular expressions: "; code "RegExp"
+        * "Points clouds"
+        * "Network access"
+        * "... and more"
 
-    right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
+        § "Will you write the next one?"
 
 
 

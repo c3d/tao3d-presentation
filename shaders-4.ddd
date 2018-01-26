@@ -1,0 +1,8 @@
+DALI_MOVIE -> "movies/Monty Python.mp4##input-repeat=-1"
+shader_show "dali.fs",
+    shader_resolution
+    shader_gtime
+    shader_channel 0, DALI_MOVIE
+    shader_channel 1, "Ground.jpg"
+    shader_depth 100%
+    shader_mouse

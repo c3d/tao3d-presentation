@@ -1,0 +1,5 @@
+shader_show "blue-wall-clock.fs",
+    shader_resolution
+    shader_htime
+    shader_depth 100%
+    shader_mouse

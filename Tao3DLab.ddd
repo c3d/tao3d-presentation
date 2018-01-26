@@ -1345,71 +1345,45 @@ section_slide "Shaders",
     picture
         translate 500, 400, 50
         rotate_z -5
-        image 0, 0, 80%, 80%, "big-data-analytics.png"
+        shader_show "two-tweets.fs",
+            shader_resolution
+            shader_htime
+            shader_depth 100%
 
 
 // ----------------------------------------------------------------------------
 base_slide "Using shaders",
 // ----------------------------------------------------------------------------
     title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
+    subtitle "Shaders are programs that run on the GPU"
     illustration 60%, "Graphics Design.png"
 
     left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
+        vertical_align 0%
+        * "Real-time effects"
+        * "Image processing"
+        * "Ray-tracing"
+        at_current_step
+        * "Ray-marching"
 
     right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
+        example_box 1, "Real-time effects", "shaders-1.ddd",
+            translate -800, -100, 0
+            scale 120%
+            import "shaders-1.ddd"
+        example_box 2, "Image processing", "shaders-2.ddd",
+            translate -800, -100, 0
+            scale 120%
+            import "shaders-2.ddd"
+        example_box 3, "Ray-tracing", "shaders-3.ddd",
+            translate -800, -100, 0
+            scale 200%
+            import "shaders-3.ddd"
+        example_box 5, "Ray-marching", "shaders-4.ddd",
+            translate -800, -100, 0
+            scale 200%
+            import "shaders-4.ddd"
 
-
-// ----------------------------------------------------------------------------
-base_slide "Image processing and filters",
-// ----------------------------------------------------------------------------
-    title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
-    illustration 60%, "Graphics Design.png"
-
-    left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
-
-    right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
-
-
-// ----------------------------------------------------------------------------
-base_slide "Real-time ray-tracing",
-// ----------------------------------------------------------------------------
-    title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
-    illustration 60%, "Graphics Design.png"
-
-    left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
-
-    right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
-
-
-// ----------------------------------------------------------------------------
-base_slide "Real-time ray-marching",
-// ----------------------------------------------------------------------------
-    title page_label
-    subtitle "Tao3D comes up with a few semi-useless themes"
-    illustration 60%, "Graphics Design.png"
-
-    left_column
-        * "Themes are exposed as modules"
-        * "Load several simultaneously"
-        * "Select a theme using "; code "theme"
-
-    right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
 
 
 // ----------------------------------------------------------------------------

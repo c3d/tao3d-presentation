@@ -1,11 +1,2 @@
-// Variable declaration
-X -> 0
-
-// Function declaration
-is_even X -> X mod 2 = 0
-
-// Operator declaration
-X% -> X * 0.01
-
 // Expression definition
 X in A..B -> X >= A and X <= B

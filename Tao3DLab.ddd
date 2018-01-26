@@ -123,6 +123,13 @@ base_slide "Building Tao3D from git",
         at_step 2
         code_box  400, 100, 700, 500, "Installation",
             text load_text "installation.txt"
+        at_step 3
+        box 0, -300, 1400, 400,
+            font "Impact", 40
+            color "darkred"
+            paragraph "It's really more complicated than it should due to LLVM API / ABI breakage"
+            style "story"
+            paragraph "Please contact me for help..."
 
 
 // ----------------------------------------------------------------------------

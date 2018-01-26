@@ -2,3 +2,11 @@ on "key:j", { skip -1 }
 on "key:k", { skip  1 }
 color "darkred"
 circle 100 * smooth_step - 200, 0, 40
+
+text_box 0, -200, 600, 400,
+    style "code"
+    font_size 30
+    paragraph "step=" & step
+    show fade_at(smooth_step, 3)
+    paragraph "smooth_step=" & smooth_step
+    refresh 0

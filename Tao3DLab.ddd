@@ -52,14 +52,17 @@ base_slide "What is Tao3D?",
         example_box 2, "Programming language", "example-1.ddd",
             import "example-1.ddd"
         example_box 3, "Real-time", "example-2.ddd",
+            highlight "time"
             import "example-2.ddd"
         example_box 4, "Interactive", "example-3.ddd",
+            highlight "mouse_[xy]"
             import "example-3.ddd"
         example_box 5, "Three dimensions", "example-4.ddd",
             light 0
             light_position 100, 100, 1000
             show 1.5
             translate_z 150
+            highlight "rotate_[xy]|extrude_depth"
             import "example-4.ddd"
 
         example_box 7, "Documents", "latex-1.ddd",
@@ -67,6 +70,7 @@ base_slide "What is Tao3D?",
         example_box 8, "Styles", "latex-1.ddd", false
 
         example_box 10, "Functional", "lisp-1.ddd",
+            highlight "Stuff"
             import "lisp-1.ddd"
         example_box 11, "Extensible", "lisp-2.ddd",
             import "lisp-2.ddd"
@@ -501,14 +505,18 @@ base_slide "Paths",
 
     right_picture
         example_box 1, "Path components", "path-1.ddd",
+            highlight "(move|quad|line|cubic)_to"
             import "path-1.ddd"
         example_box 2, "Arbitrary paths", "path-2.ddd",
             translate_y -250
+            highlight "quad_flower|quad_r"
             import "path-2.ddd"
         example_box 3, "Shapes in paths", "path-3.ddd",
             translate_y -250
+            highlight "ellipse|rectangle"
             import "path-3.ddd"
         example_box 4, "Text in path", "path-4.ddd",
+            highlight "text"
             import "path-4.ddd"
 
 
@@ -605,12 +613,16 @@ base_slide "Using locally and shape",
 
     right_picture
         example_box 1, "Cumulative attributes", "locally-1.ddd",
+            highlight "color|translate_x|rotate_z"
             import "locally-1.ddd"
         example_box 2, "Local changes", "locally-2.ddd",
+            highlight "locally"
             import "locally-2.ddd"
         example_box 3, "Editable shape", "locally-3.ddd",
+            highlight "shape"
             import "locally-3.ddd"
         example_box 4, "Multiple editable shapes", "locally-4.ddd",
+            highlight "shape"
             import "locally-4.ddd"
 
 
@@ -643,6 +655,7 @@ base_slide "3D objects",
 
     picture
         code_box 0, -200, 1300, 500, "Loading a 3D object",
+            highlight "import|ObjectLoader|object"
             colorize load_text "demos/loading-object.ddd"
 
 
@@ -683,18 +696,25 @@ base_slide "Images, pictures and drawings",
 
     right_picture
         example_box 1, "Image from file", "picture-1.ddd",
+            highlight "image"
             import "picture-1.ddd"
         example_box 2, "Transparent image", "picture-2.ddd",
+            highlight "image"
             import "picture-2.ddd"
         example_box 3, "Image from URL", "picture-3.ddd",
+            highlight "image_URL"
             import "picture-3.ddd"
         example_box 4, "Image textures", "picture-4.ddd",
+            highlight "texture"
             import "picture-4.ddd"
         example_box 5, "Colorization", "picture-5.ddd",
+            highlight "color_hsv"
             import "picture-5.ddd"
         example_box 6, "Texture dimensions", "picture-6.ddd",
+            highlight "texture_(width|height)"
             import "picture-6.ddd"
         example_box 7, "Image packing", "picture-7.ddd",
+            highlight "picture_packer"
             import "picture-7.ddd"
 
 
@@ -716,24 +736,30 @@ base_slide "Movie playback",
     left_picture
         example_box 1, "Movie playback", "vlc-1.ddd",
             translate 400, -100, 0
+            highlight "movie"
             import "vlc-1.ddd"
-        example_box 2, "VLC Module", "vlc-2.ddd", false
+        example_box 2, "VLC Module", "vlc-2.ddd",
+            highlight "import|VLCAudioVideo"
         example_box 3, "Movie texture", "vlc-3.ddd",
+            highlight "movie_texture"
             translate 400, -150, 0
             scale 60%
             import "vlc-3.ddd"
             if smooth_step in 2.8..2.9 then
                 movie_set_time ASTEROIDS, 0.0
         example_box 4, "Movie time", "vlc-4.ddd",
+            highlight "movie_(set_)?time"
             translate 400, -200, 0
             scale 50%
             import "vlc-4.ddd"
         example_box 5, "Movie volume", "vlc-5.ddd",
+            highlight "movie_(set_)?volume"
             translate 400, -200, 0
             import "vlc-5.ddd"
             if smooth_step >= 5.9 then
                 movie_drop HOLY_GRAIL
         example_box 6, "VLC options", "vlc-6.ddd",
+            highlight "OPT[1-3]"
             translate 0, -180, 0
             import "vlc-6.ddd"
 
@@ -852,10 +878,13 @@ base_slide "Dynamic textures",
 
     right_picture
         example_box 1, "Dynamic texture", "dynamic-1.ddd",
+            highlight "dynamic_texture"
             import "dynamic-1.ddd"
         example_box 2, "Acceleration", "dynamic-2.ddd",
+            highlight "^(for|in|loop)$"
             import "dynamic-2.ddd"
         example_box 3, "Texturing effect", "dynamic-3.ddd",
+            highlight "texture_(wrap|transform)"
             import "dynamic-3.ddd"
 
 
@@ -913,27 +942,34 @@ base_slide "Text boxes and text layout",
         line_color "transparent"
 
         example_box 1, "Text box", "text-1.ddd",
+            highlight "text_box"
             translate_y -200
             import "text-1.ddd"
         example_box 2, "Fonts and attributes", "text-2.ddd",
+            highlight "font|color|roman"
             translate_y -200
             import "text-2.ddd"
         example_box 3, "Horizontal and vertical", "text-3.ddd",
+            highlight "(vertical_)?align"
             translate_y -200
             font "Arial", bold, 25
             import "text-3.ddd"
         example_box 4, "Proportional alignment", "text-4.ddd",
+            highlight "(vertical_)?align"
             translate_y -200
             import "text-4.ddd"
         example_box 5, "Justification", "text-5.ddd",
+            highlight "(vertical_)?align"
             translate_y -200
             font "Arial", 18
             import "text-5.ddd"
         example_box 6, "Spread", "text-6.ddd",
+            highlight "(vertical_)?align"
             translate_y -200
             font "Arial", 35
             import "text-6.ddd"
         example_box 7, "Right-to-left text layout", "text-7.ddd",
+            highlight "(vertical_)?align"
             translate_y -200
             font "Arial Unicode MS", 35
             import "text-7.ddd"
@@ -965,7 +1001,9 @@ base_slide "Auto-scaling",
         ** "Using "; code "background"; text " and "; code "contents"
         ** "These functions also deal with depth (compensate for perspective)"
     right_picture
-        example_box 6..7, "Background and contents", "autoscale.ddd", false
+        example_box 6..7, "Background and contents", "autoscale.ddd",
+            highlight "background|contents"
+
 
 
 // ----------------------------------------------------------------------------
@@ -988,15 +1026,24 @@ base_slide "Reactive programming",
         §
         § "But... How does it work?"
     right_picture
-        example_box 1..2, "Mouse control", "reactive-1.ddd",
+        example_box 1, "Mouse control", "reactive-1.ddd",
+            highlight "mouse_(x|y|buttons)"
+            translate 200 * fade_at(smooth_step, 2), -200, 0
+            rotate_x 20 * fade_at(smooth_step, 2)
+            rotate_y 45 * fade_at(smooth_step, 2)
+            import "reactive-1.ddd"
+        example_box 2, "Mouse control", "reactive-1b.ddd",
+            highlight "rotate_[xy]|mouse_[xy]"
             translate 200 * fade_at(smooth_step, 2), -200, 0
             rotate_x 20 * fade_at(smooth_step, 2)
             rotate_y 45 * fade_at(smooth_step, 2)
             import "reactive-1.ddd"
         example_box 3, "Keyboard control", "reactive-2.ddd",
+            highlight "on|shift_modifier"
             translate 0, -200, 0
             import "reactive-2.ddd"
         example_box 4, "Time-dependent code", "reactive-3.ddd",
+            highlight "on|(page_)?time"
             translate 0, -200, 0
             font "Arial", 30
             align_center; vertical_align_center
@@ -1022,17 +1069,23 @@ base_slide "Optimized refresh and redraw",
         * "(This is a bit inefficient)"
         * "Fix #2: Capture a copy of the value"
         §
-        § "All this matters for power and performance..."
+        § "All this matters for power..."
+        § "(aka: ""Ran out of battery during talk"")"
+        § "... and performance"
+        § "(Cool laptops are fast laptops)"
+
 
 
     right_picture
         example_box 1..2, "Refresh", "reactive-4.ddd",
+            highlight "locally"
             translate_y -200
 
             import "reactive-4.ddd"
 
             text_box -800, 0, 600, 400,
                 style "code"
+                font_size 42
                 paragraph "key_hits=" & key_hits
                 paragraph "mouse_hits=" & mouse_hits
                 paragraph "time_hits=" & time_hits
@@ -1048,14 +1101,17 @@ base_slide "Optimized refresh and redraw",
                 global_hits := 0
 
         example_box 4..5, "Saved variable", "reactive-5.ddd",
+            if smooth_step in 3.9..5.1 then highlight "I"
             translate_y -200
             import "reactive-5.ddd"
 
         example_box 6..7, "Force redraw", "reactive-6.ddd",
+            if smooth_step in 5.9..7.1 then highlight "time"
             translate_y -200
             import "reactive-6.ddd"
 
         example_box 8, "Variable capture", "reactive-7.ddd",
+            highlight "Z"
             translate_y -200
             import "reactive-7.ddd"
 
@@ -1079,25 +1135,24 @@ base_slide "Reversible animations",
 
     right_picture
         example_box 2..4, "Stepping", "reversible-1.ddd",
+            if smooth_step in 1.9..2.1 then highlight "^step$"
+            if smooth_step in 2.9..3.1 then highlight "smooth_step"
+            if smooth_step in 3.9..4.1 then highlight "skip"
             translate 0, -200, 0
             import "reversible-1.ddd"
-            text_box 0, -200, 600, 400,
-                style "code"
-                font_size 30
-                paragraph "step=" & step
-                show fade_at(smooth_step, 3)
-                paragraph "smooth_step=" & smooth_step
-                refresh 0
 
         example_box 5, "Fading", "reversible-2.ddd",
+            if smooth_step in 4.9..5.1 then highlight "fade_at"
             translate_y -200
             import "reversible-2.ddd"
 
         example_box 6, "Fading out", "reversible-3.ddd",
+            highlight "fade_out_at"
             translate_y -200
             import "reversible-3.ddd"
 
         example_box 7, "Fading between", "reversible-4.ddd",
+            highlight "fade_between"
             translate_y -200
             import "reversible-4.ddd"
 
@@ -1134,7 +1189,9 @@ base_slide "Using pre-existing themes",
         * "Select a theme using "; code "theme"
 
     right_picture
-        example_box 1..3, "Themes", "theme-1.ddd", false
+        example_box 1..3, "Themes", "theme-1.ddd",
+            if smooth_step in 0.9..1.1 then highlight "import"
+            if smooth_step in 2.9..3.1 then highlight "theme"
 
 
 // ----------------------------------------------------------------------------
@@ -1156,7 +1213,7 @@ base_slide "The theme.xl file",
         * "It is heavily based on pattern matching"
         * "You can customize on:"
         ** "Theme"
-        ** "Slider master"
+        ** "Slide master"
         ** "Style"
         §
         § "You can also add a few useful tricks"
@@ -1168,7 +1225,18 @@ base_slide "The theme.xl file",
         only_at 1..7,
             scale 100% - 30% * fade_at(smooth_step, 4)
             code_box 0, -100, 1200, 600, "Theme example",
+                highlight "theme"
                 colorize load_text "theme-example.xl"
+            only_at 5,
+                highlight_box "green", -370, -200, 120, 400
+            only_at 6,
+                highlight_box "green", -230, -200, 130, 400
+            only_at 7,
+                highlight_box "green", -100, -200, 150, 400
+
+        only_at 9,
+            highlight_box "cyan", 0, -400, 1200, 50
+
     right_picture
         example_box 9, "Time check", "time-check.ddd", false
         example_box 10, "Laser poitner", "laser-pointer.ddd", false
@@ -1202,16 +1270,19 @@ base_slide "Text manipulations",
 
     right_picture
         example_box 1, "Text concatenation", "text-manip-1.ddd",
+            highlight "&"
             font "Arial", 40
             translate_y -200
             color "darkred"
             import "text-manip-1.ddd"
         example_box 2, "Text ranges", "text-manip-2.ddd",
+            highlight "text_range"
             font "Menlo", 40
             translate_y -200
             color "darkgreen"
             import "text-manip-2.ddd"
         example_box 3, "Loading text from file", "text-manip-3.ddd",
+            highlight "load_text"
             font "Arial", 20
             translate_y -200
             color "darkblue"
@@ -1241,28 +1312,35 @@ base_slide "Simple lists",
             font "Arial", 30
             align 50%
             vertical_align 50%
-        example_box 1, "Infix operator", "list-1.ddd", false
+        example_box 1, "Infix operator", "list-1.ddd",
+            highlight ","
         example_box 2, "List expansion", "list-2.ddd",
+            highlight "list_chart"
             demo_adjust
             color "darkred"
             import "list-2.ddd"
         example_box 3, "Code in list", "list-2b.ddd",
+            highlight "sin|time"
             demo_adjust
             color "darkred"
             import "list-2b.ddd"
         example_box 4, "Map", "list-3.ddd",
+            highlight "with"
             demo_adjust
             color "darkgreen"
             import "list-3.ddd"
         example_box 5, "Ranges in map", "list-3b.ddd",
+            highlight "\.\."
             demo_adjust
             color "darkgreen"
             import "list-3b.ddd"
         example_box 6, "Filter", "list-4.ddd",
+            highlight "where"
             demo_adjust
             color "darkblue"
             import "list-4.ddd"
         example_box 7..8, "Reduce", "list-5.ddd",
+            highlight "[x,y]"
             demo_adjust
             color "darkred"
             font "Arial", 50
@@ -1285,13 +1363,14 @@ base_slide "Loading data from external files",
 
     right_picture
         example_box 1..5, "Themes", "load_csv-1.ddd",
+            highlight "load_csv"
             color "black"
             adjust fade_between(smooth_step, 2, 2)
             adjust S:real ->
                 translate -400*S, 250*S - 150, 100 * S
                 scale 60% + 250% * S
             rounded_rectangle 0,0, 800, 600, 20
-            rotate_y 5 * time
+            rotate_y 5 * time + 0.1 * mouse_x
             import "load_csv-1.ddd"
 
 
@@ -1318,14 +1397,17 @@ base_slide "Regular expressions",
 
     right_picture
         example_box 1, "Regexp match", "regexp-1.ddd",
+            highlight "regexp_match"
             translate -200, -150, 0
             font "Arial", 60
             import "regexp-1.ddd"
         example_box 2, "Regexp parse", "regexp-2.ddd",
+            highlight "regexp_parse"
             translate -600, -150, 0
             font "Arial", 60
             import "regexp-2.ddd"
         example_box 3, "Regexp parse all", "regexp-3.ddd",
+            highlight "regexp_parse_all"
             translate -800, -150, 0
             font "Arial", 60
             import "regexp-3.ddd"
@@ -1388,10 +1470,12 @@ base_slide "Using shaders",
 
     right_picture
         example_box 1, "Real-time effects", "shaders-1.ddd",
+            highlight "shader_program|(vertex|fragment)_shader|shader_set"
             translate -800, -100, 0
             scale 120%
             import "shaders-1.ddd"
         example_box 2, "Image processing", "shaders-2.ddd",
+            highlight "import|Filters|gaussian|emboss|sharpness|laplacian"
             translate -800, -100, 0
             scale 120%
             import "shaders-2.ddd"

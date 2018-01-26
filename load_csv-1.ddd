@@ -1,6 +1,6 @@
 load_csv "stars.csv", "star"
 
-star Mag:real, Color:real, X:real, Y:real, Z:real ->
-    color_hsv 360 * Color mod 360, screen_mouse_y * 2.0e-4 * Mag, 1
+star M:real, C:real, X:real, Y:real, Z:real ->
+    color_hsv 360*C mod 360, mouse_y*5.0e-4*M, 1
     point X, Y, Z, 1
 star X -> false

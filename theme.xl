@@ -588,6 +588,7 @@ red     Body -> text_span { color "#AA0022"; render Body }
 orange  Body -> text_span { color "#DD3311"; render Body }
 yellow  Body -> text_span { color "#EEAA11"; render Body }
 green   Body -> text_span { color "#006633"; render Body }
+ltblue  Body -> text_span { color "#0066CC"; render Body }
 blue    Body -> text_span { color "#003399"; render Body }
 ocean   Body -> text_span { color "#229988"; render Body }
 sky     Body -> text_span { color "#3399FF"; render Body }
@@ -702,11 +703,28 @@ example_box N, Title, File, Body ->
             if abs(smooth_step - step) <= 0.001 then
                 colorize load_text File
             else
+                highlight "none" // Disable highlighting
                 text load_text File
 
         locally
             translate code_x, code_y, 20
             Body
+
+
+highlight   -> "none"
+highlight H -> highlight := H
+
+
+colorize_highlight T:text ->
+// ----------------------------------------------------------------------------
+//   Highlight names depending on highlight pattern
+// ----------------------------------------------------------------------------
+//   We must use a separate function to save the captured patten,
+//   since it would be overwritten by the regexp_match we do here
+    if regexp_match(T, highlight) then
+        bold { red T }
+    else
+        text T
 
 
 colorize Input:text ->
@@ -716,7 +734,7 @@ colorize Input:text ->
     regexp_parse_all Input,
         // Definition
         - "([^\n]*)(->)" ->
-            italic { orange { colorize regexp_captured 1 } }
+            italic { ltblue { colorize regexp_captured 1 } }
             gray regexp_captured 2
         // Real numbers
         "[0-9_]+[.][0-9_]+(e[+-]?[0-9_]+)?" ->
@@ -741,14 +759,14 @@ colorize Input:text ->
             red regexp_captured 0
         // Names
         "[A-Za-z][A-Za-z_0-9]*" ->
-            text regexp_captured 0
+            colorize_highlight regexp_captured 0
         // Type declarations
         "(:)[ ]*([A-Za-z][A-Za-z0-9_]*)" ->
             gray regexp_captured 1
             green regexp_captured 2
         // Symbols
         "[^A-Za-z0-9 \n]+" ->
-            navy regexp_captured 0
+            navy { colorize_highlight regexp_captured 0 }
         // Spaces
         "[ \n]+" ->
             text regexp_captured 0

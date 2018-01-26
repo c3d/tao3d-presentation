@@ -3,7 +3,7 @@ import Filters
 HOLY_GRAIL -> "movies/Monty Python.mp4##input-repeat=-1"
 movie_texture HOLY_GRAIL
 
-filt 0 -> gaussian 30.0 + 25.0 * sin (0.1 * time)
+filt 0 -> gaussian 30.0 + 25.0*sin(0.1*time)
 filt 1 -> emboss
 filt 2 -> sharpness
 filt 3 -> laplacian

@@ -29,7 +29,7 @@ base_slide "What is Tao3D?",
         * "Tao3D is a programming language for real-time interactive 3D"
         ** "A programming language"
         ** "Real-time"
-        ** "Interactive"
+        ** "Interactive (reactive)"
         ** "in three dimensions"
         §
         * "Like LaTeX, Tao3D is..."
@@ -693,7 +693,6 @@ base_slide "Images, pictures and drawings",
         * "Colorization"
         * "Texture dimensions"
         * "And stranger things"
-        * "(some less useless than others)"
 
     right_picture
         example_box 1, "Image from file", "picture-1.ddd",

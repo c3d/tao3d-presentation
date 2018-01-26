@@ -765,7 +765,7 @@ colorize Input:text ->
             gray regexp_captured 1
             green regexp_captured 2
         // Symbols
-        "[^A-Za-z0-9 \n]+" ->
+        "[^A-Za-z0-9 ""'\n]+" ->
             navy { colorize_highlight regexp_captured 0 }
         // Spaces
         "[ \n]+" ->

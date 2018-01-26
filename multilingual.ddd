@@ -1,0 +1,8 @@
+LANG -> "en"
+En fr Fr -> if LANG="fr" then Fr else En
+english Body -> if LANG="en" then Body
+french  Body -> if LANG="fr" then Body
+key "f" -> LANG := "fr"; refresh 0
+key "e" -> LANG := "en"; refresh 0
+
+* "This is a multilingual bullet" fr "Ceci est un texte localisé"

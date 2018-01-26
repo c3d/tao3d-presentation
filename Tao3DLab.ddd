@@ -1219,22 +1219,23 @@ demo_slide "Live Coding #8: Using existing themes", 100%, "Graphics Design.png"
 base_slide "The theme.xl file",
 // ----------------------------------------------------------------------------
     title { text "The "; code "theme.xl"; text "file" }
-    subtitle "Configuring and tweaking themes"
+    subtitle "Configuring and tweaking themes" fr "Configurer et ajuster des thèmes"
     illustration 70%, "Control Panel.png"
 
     story
         vertical_align -10%
-        * "Tao3D automatically loads "; code "theme.xl"
-        * "Think of it as a style sheet"
-        * "It is heavily based on pattern matching"
-        * "You can customize on:"
-        ** "Theme"
-        ** "Slide master"
-        ** "Style"
+        * "Tao3D automatically loads " fr "Tao3D charge "; code "theme.xl"
+        * "Think of it as a style sheet" fr "Un peu comme une feuille de style"
+        * "It is heavily based on pattern matching" fr "Tire parti de la recherche de modèles"
+        * "You can customize on:" fr "Peut être configuré par:"
+        ** "Theme" fr "Thème"
+        ** "Slide master" fr "Modèle"
+        ** "Style" fr "Style"
         §
-        § "You can also add a few useful tricks"
-        * "Checking remaining time"
-        * "Virtual laser pointer"
+        § "You can also add a few useful tricks" fr "Quelques trucs utiles"
+        * "Checking remaining time" fr "Vérification du temps restant"
+        * "Virtual laser pointer" fr "Pointeur laser virtuel"
+        * "Multilingual text" fr "Internationalisation"
 
 
     picture
@@ -1255,7 +1256,8 @@ base_slide "The theme.xl file",
 
     right_picture
         example_box 9, "Time check", "time-check.ddd", false
-        example_box 10, "Laser poitner", "laser-pointer.ddd", false
+        example_box 10, "Laser pointer", "laser-pointer.ddd", false
+        example_box 11, "Multilingual text", "multilingual.ddd", false
 
 
 

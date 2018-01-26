@@ -2,6 +2,6 @@ import BlackAndWhiteThemes
 import WhiteChristmasTheme
 import SeasonsGreetingsTheme
 import PastelTrianglesTheme
-import PastelTrianglesTheme
+import BrightRectanglesTheme
 
 theme "PastelTriangles"

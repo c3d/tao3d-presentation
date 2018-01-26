@@ -1206,7 +1206,7 @@ base_slide "Using pre-existing themes",
 
     right_picture
         example_box 1..3, "Themes", "theme-1.ddd",
-            if smooth_step in 0.9..1.1 then highlight "import"
+            if smooth_step in 0.9..1.1 then highlight "Theme"
             if smooth_step in 2.9..3.1 then highlight "theme"
 
 

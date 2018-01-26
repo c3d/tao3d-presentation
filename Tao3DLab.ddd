@@ -1147,12 +1147,25 @@ base_slide "The theme.xl file",
         * "Tao3D automatically loads "; code "theme.xl"
         * "Think of it as a style sheet"
         * "It is heavily based on pattern matching"
-        * "You can customize on theme, master or style"
+        * "You can customize on:"
+        ** "Theme"
+        ** "Slider master"
+        ** "Style"
+        §
+        § "You can also add a few useful tricks"
+        * "Checking remaining time"
+        * "Virtual laser pointer"
+
 
     picture
-        at_step 1
-        code_box 0, -100, 1200, 600, "Theme example",
-            colorize load_text "theme-example.xl"
+        only_at 1..7,
+            scale 100% - 30% * fade_at(smooth_step, 4)
+            code_box 0, -100, 1200, 600, "Theme example",
+                colorize load_text "theme-example.xl"
+    right_picture
+        example_box 9, "Time check", "time-check.ddd", false
+        example_box 10, "Laser poitner", "laser-pointer.ddd", false
+
 
 
 // ============================================================================

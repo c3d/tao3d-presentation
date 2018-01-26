@@ -6,7 +6,7 @@ import ObjectLoader
 import RegExp
 import Filters
 import SeasonsGreetingsTheme
-import WebRemote
+import Speech
 
 
 redhat_theme    -> "RedHat"
@@ -493,6 +493,21 @@ demo_slide Title, Size, Image, Body ->
                 style "demo"
                 text Title
         Body
+        locally
+            MAX_TIME   -> 300
+            ALERT_TIME -> 240
+            voice "Fiona"
+            if page_time >= MAX_TIME then
+                if integer(page_time / 5) mod 2 = 0 then
+                    say "You need to stop right now!"
+                else
+                    say "I said now! I mean it!"
+            if page_time >= MAX_TIME - 9 then
+                say "" & integer(300 - page_time)
+            else if page_time >= MAX_TIME - 10 then
+                say "10 seconds"
+            else if page_time > ALERT_TIME then
+                say "Christophe, only one minute left!"
 demo_slide Title, Size, Image -> demo_slide Title, Size, Image, false
 
 
@@ -1176,6 +1191,3 @@ english Body -> if LANG="en" then Body
 french  Body -> if LANG="fr" then Body
 key "f" -> LANG := "fr"; refresh 0
 key "e" -> LANG := "en"; refresh 0
-
-
-web_remote_start

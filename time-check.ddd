@@ -1,0 +1,18 @@
+DURATION -> 3000 // 50 minutes
+START    -> 0.0
+
+stime -> hours*3600+minutes*60+seconds
+key "Backspace" ->
+  START := stime
+  goto_page 1
+
+once
+    START := stime
+
+locally
+  color "red"
+  translate 0, BOT_Y + 20, -90
+  rectangle BOT_W*(stime-START)/DURATION,4
+  if page_count > 0 then
+    color "green"
+    rectangle BOT_W*page_number/page_count,2

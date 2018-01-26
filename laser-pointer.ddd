@@ -1,0 +1,12 @@
+key "l" -> laser := 1 - laser
+laser -> 0
+
+locally
+    translate_z 500
+    color "red", 80% * laser
+    rectangle mouse_x, 0, 1, 10000
+    rectangle 0, mouse_y, 10000, 1
+    circle mouse_x, mouse_y, 3
+    line_color "red", 80% * laser
+    color "red", 10% * laser
+    circle mouse_x, mouse_y, 10

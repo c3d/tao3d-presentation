@@ -1,0 +1,11 @@
+import Speech
+
+on "key:a",
+    voice "Alex"
+    say "I am sorry, Dave, I'm afraid I can do that"
+on "key:e",
+    voice "Daniel"
+    say "Do you mean I am not supposed to speak?"
+on "key:u",
+    voice "Fiona"
+    say "Please, this is a serious talk"

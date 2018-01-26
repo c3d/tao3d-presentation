@@ -692,7 +692,8 @@ base_slide "Images, pictures and drawings",
         * "Images can be used as textures"
         * "Colorization"
         * "Texture dimensions"
-        * "And more bizarre things"
+        * "And stranger things"
+        * "(some less useless than others)"
 
     right_picture
         example_box 1, "Image from file", "picture-1.ddd",
@@ -716,6 +717,22 @@ base_slide "Images, pictures and drawings",
         example_box 7, "Image packing", "picture-7.ddd",
             highlight "picture_packer"
             import "picture-7.ddd"
+
+
+// ----------------------------------------------------------------------------
+base_slide "About stranger things",
+// ----------------------------------------------------------------------------
+    title page_label
+    subtitle "So many functions in Tao3D, so little time"
+    illustration 40%, "stranger-things.png"
+
+    left_column
+        * "More ways to surprise the audience"
+
+    right_picture
+        example_box 1, "Speech synthesis", "speech-1.ddd",
+            highlight "import|Speech|voice|say"
+            import "speech-1.ddd"
 
 
 // ----------------------------------------------------------------------------

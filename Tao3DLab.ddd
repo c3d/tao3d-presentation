@@ -182,7 +182,7 @@ base_slide "Tao3D is an application of XL",
         * "XL stands for ""Extensible Language"""
         * "It makes it easy to create Domain Specific Languages (DSLs)"
         * "Tao3D began with the question: """; italic "What about documents?"; text """"
-        * "Tao3D is (by far) the largest DSL to date"
+        * "Tao3D is (by far) the largest DSL for XL to date"
     picture
         at_step 3
         code_box 0, -200, 1300, 300, "A simple slide",
@@ -606,7 +606,7 @@ base_slide "Using locally and shape",
     left_column
         * "Attributes and geometric transforms are cumulative"
         * "Changes can be kept local to a code block with "; code "locally"
-        * "A shape can be made editable by putting inside a "; code "shape"
+        * "A shape can be made editable by putting it inside a "; code "shape"
         * "The mechanisms governing that behavior are relatively subtle"
         §
         * "Recommended: edit only small blank documents, then copy-paste and replace "; code "shape"; text " with "; code "locally"
